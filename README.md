@@ -9,6 +9,8 @@ We're using:
 * Laravel Breadcrumbs => https://github.com/davejamesmiller/laravel-breadcrumbs
 * Not included here but recommended for development is [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
+** Note: this is a fork of my public package to move model definitions into the app/Model directory as a base for bigger projects. **
+
 #### Install Instructions:
 
 1) clone repo
@@ -23,7 +25,7 @@ We're using:
 10) login using default Superuser account =>  login: super@email.com password: secret
 
 #### Notes:
-* In the App/Controller base class is a function called check_permission that checks permissions for various actions on controllers.  You can edit this to always return true for development to turn off permission checks.
+* In the App/Controller base class is a function called check_permission that checks permissions for various actions on controllers.  You can edit this to always return true for development to turn off permission checks. 
 
 * In the resources/views/layouts/app.blade.php layout are a few permission related @can directives to control menu items - change or remove these as needed.
 
