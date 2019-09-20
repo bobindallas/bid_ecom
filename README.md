@@ -9,7 +9,7 @@ We're using:
 * Laravel Breadcrumbs => https://github.com/davejamesmiller/laravel-breadcrumbs
 * Not included here but recommended for development is [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
-** Note: this is a fork of my public package to move model definitions into the app/Model directory as a base for bigger projects. **
+**Note: this is a fork of my public package to move model definitions into the app/Model directory as a base for bigger projects.**
 
 #### Install Instructions:
 
