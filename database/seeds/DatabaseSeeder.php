@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call([
 			PermissionsTableSeeder::class,
 			RolesTableSeeder::class,
-			UsersTableSeeder::class
+			UsersTableSeeder::class,
+			CountriesTableSeeder::class,
+			StatesTableSeeder::class
 		]);
 
 		$this->command->info('You can now login as a Superuser with Login: super@email.com Password: secret');
