@@ -33,4 +33,7 @@ return [
         realpath(storage_path('framework/views'))
     ),
 
+	 'ADMIN_LAYOUT' => 'layouts.admin.app',
+	 'SITE_LAYOUT'  => 'layouts.app',
+
 ];

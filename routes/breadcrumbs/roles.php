@@ -2,7 +2,7 @@
 
 // Home > Roles
 Breadcrumbs::for('roles.index', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('dashboard');
     $trail->push('Roles', route('roles.index'));
 });
 

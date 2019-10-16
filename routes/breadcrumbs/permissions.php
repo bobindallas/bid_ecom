@@ -2,7 +2,7 @@
 
 // Home > Permissions
 Breadcrumbs::for('permissions.index', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('dashboard');
     $trail->push('Permissions', route('permissions.index'));
 });
 

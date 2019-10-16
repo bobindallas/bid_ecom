@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(config('view.SITE_LAYOUT'))
 
 @section('content_header')
    {{ Breadcrumbs::render('home') }}

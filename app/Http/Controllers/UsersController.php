@@ -22,7 +22,7 @@ class UsersController extends Controller {
 
 		$users = User::all();
 
-		return view('users.index', compact(
+		return view('admin.users.index', compact(
 			'users'
 		));
 
@@ -38,7 +38,7 @@ class UsersController extends Controller {
 		$permissions = Permission::all()->pluck('name');
 		$roles       = Role::all()->pluck('name', 'id');
 
-		return view('users.create', compact(
+		return view('admin.users.create', compact(
 			'permissions',
 			'roles'
 		));
@@ -98,7 +98,7 @@ class UsersController extends Controller {
 		$user_roles       = $user->getRoleNames();
 		$user_permissions = $user->getDirectPermissions();
 
-		return view('users.edit', compact(
+		return view('admin.users.edit', compact(
 			'user',
 			'roles',
 			'permissions',

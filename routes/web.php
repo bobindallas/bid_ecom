@@ -14,10 +14,14 @@
 Route::get('/', 'SiteController@index')->name('home');
 Route::resource('site','SiteController');
 
-Route::resource('roles','RolesController');
-Route::resource('permissions','PermissionsController');
-Route::resource('users','UsersController');
+Route::prefix('admin')->group(function () {
+	Route::resource('roles','RolesController');
+	Route::resource('permissions','PermissionsController');
+	Route::resource('users','UsersController');
+	Route::resource('dashboard','DashboardController');
+	Route::resource('products','ProductController');
+	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+});
 
 // Auth::routes(['register' => false]); // hide register link
-Auth::routes(); // hide register link
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();

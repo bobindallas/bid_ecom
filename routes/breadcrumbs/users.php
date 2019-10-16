@@ -2,7 +2,7 @@
 
 // Home > Users
 Breadcrumbs::for('users.index', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('dashboard');
     $trail->push('Users', route('users.index'));
 });
 

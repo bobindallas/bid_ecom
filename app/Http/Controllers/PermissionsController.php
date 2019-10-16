@@ -20,7 +20,7 @@ class PermissionsController extends Controller {
 		$this->check_permission('view_permissions');
 		$permissions = Permission::all();
 
-		return view('permissions.index')->with([
+		return view('admin.permissions.index')->with([
 			'permissions' => $permissions
 		]);
 
@@ -34,7 +34,7 @@ class PermissionsController extends Controller {
 
 		$this->check_permission('create_permissions');
 
-		return view('permissions.create');
+		return view('admin.permissions.create');
 	}
 
 	/**
@@ -82,7 +82,7 @@ class PermissionsController extends Controller {
 
 		$permission = Permission::findOrFail($id);
 
-		return view('permissions.edit', compact('permission'));
+		return view('admin.permissions.edit', compact('permission'));
 
 	}
 
