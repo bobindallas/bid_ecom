@@ -15,7 +15,6 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('slug', 254)->default('');
             $table->string('name', 254)->default('');
             $table->text('description')->nullable();
@@ -23,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->decimal('cost', 10, 2)->default(0);
             $table->float('cost_multiplier', 10, 4)->default(0);
             $table->unsignedTinyInteger('active')->default(1);
+            $table->timestamps();
             $table->index('slug');
         });
     }
