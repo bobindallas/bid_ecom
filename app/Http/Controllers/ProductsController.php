@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Model\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
-{
+class ProductsController extends Controller {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *

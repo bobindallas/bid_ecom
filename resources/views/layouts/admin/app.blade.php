@@ -19,6 +19,8 @@
 	<link href="{{ asset('vendor/pace-progress/css/pace.min.css') }}" rel="stylesheet">
 	<!-- These need to be here for datatables to work -->
 	<script src="{{ asset('vendor/node_modules/jquery/dist/jquery.min.js') }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   {{--<script src="https://cdn.jsdelivr.net/npm/vue"></script> --}}
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
 	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
    @stack('css')
