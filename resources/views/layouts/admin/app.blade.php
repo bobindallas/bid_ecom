@@ -165,8 +165,12 @@
 			</li>
 			<li class="nav-title">Products</li>
 			<li class="nav-item">
+			  <a class="nav-link" href="{{ route('product_categories.index') }}">
+				<i class="nav-icon icon-pencil"></i> Product Categories</a>
+			</li>
+			<li class="nav-item">
 			  <a class="nav-link" href="{{ route('products.index') }}">
-				<i class="nav-icon icon-pencil"></i> Product Details</a>
+				<i class="nav-icon icon-pencil"></i> Products</a>
 			</li>
 {{--
 			<li class="nav-title">Components</li>
@@ -404,6 +408,7 @@
 		</ul>
 		<!-- Tab panes-->
 		<div class="tab-content">
+{{--
 		  <div class="tab-pane active" id="timeline" role="tabpanel">
 			<div class="list-group list-group-accent">
 			  <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</div>
@@ -667,6 +672,7 @@
 			</div>
 			<small class="text-muted">25GB/256GB</small>
 		  </div>
+--}}
 		</div>
 	  </aside>
 	</div>

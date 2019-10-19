@@ -18,7 +18,7 @@ class CreateProductCategoriesTable extends Migration
 				$table->string('slug', 254)->default('');
 				$table->string('name', 254)->default('');
 				$table->text('description')->nullable();
-				$table->unsignedMediumInteger('display_order')->default(1);
+				$table->unsignedInteger('display_order')->default(1);
 				$table->unsignedTinyInteger('active')->default(1);
             $table->timestamps();
 				$table->index('slug');

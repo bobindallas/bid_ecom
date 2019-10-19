@@ -38,9 +38,17 @@ class ProductsController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
-	{
-		//
+	public function store(Request $request) {
+
+
+		$this->validate($request,[
+			'slug'				=> 'bail:required|max:255|alpha_dash|unique:products,slug',
+			'name'				=> 'required|max:255',
+			// 'description'	  => 'required|max:255',
+			'cost'				=> 'required',
+			'cost_multiplier' => 'required'
+		]);
+
 	}
 
 	/**

@@ -13,7 +13,7 @@
 		<div style="float:right;padding-right:20px;"><a href="{{ route('permissions.create') }}" title="Add New Permission"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br />
 	@endcan
 			@if (count($permissions))
-		<table id="permissions" class="table table-bordered table-hover compact">
+		<table id="permissions" class="table table-hover table-responsive-sm table-sm">
 			<thead>
 				<tr>
 					<th>ID</th>
