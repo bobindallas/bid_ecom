@@ -21,7 +21,8 @@ class CreateProductCategoriesTable extends Migration
 				$table->unsignedInteger('display_order')->default(1);
 				$table->unsignedTinyInteger('active')->default(1);
             $table->timestamps();
-				$table->index('slug');
+
+				$table->unique('slug');
 				$table->index('display_order');
         });
     }

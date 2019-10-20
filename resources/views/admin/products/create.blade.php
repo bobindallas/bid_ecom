@@ -7,55 +7,69 @@
 @section('content')
 	<div class="container">
 		<div id="plist">
-		<div class="card">
-			<div class="card-header">Add New Product</div>
-			<div class="card-body">
-				<form method='POST' action="{{ route('products.store') }}" name="F1" id="F1">
-					@csrf
-					@method('POST')
-					<div v-if="errors.length" class="alert alert-warning">
-						<span class="lead">Some required data...</span>
-							<ul>
-								<li v-for="error in errors" class="list-unstyled"> @{{ error }}</li>
-							</ul>
-					</div>
-					<div class="form-group">
-						<label for="slug">Slug</label>
-						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" v-on:keyup="check_form" placeholder='Slug' readonly>
-						<input type="hidden" name="slug" id="slug" v-model="fdata.slug">
-					</div>
-					<div class="form-group">
-						<label for="name">Name *</label>
-						<input type="text" name="name" value="" class='form-control' v-model="fdata.name" v-on:keyup="check_form" placeholder='Product Name'>
-					</div>
-					<div class="form-group">
-						<label for="description">Description</label>
-						<textarea name="description" value="" class='form-control' v-model="fdata.description" placeholder='Product Description'></textarea>
-					</div>
-					<div class="form-group">
-						<label for="cost">Cost *</label>
-						<input type="text" name="cost" value="" class='form-control' v-model="fdata.cost" v-on:keyup="check_form" placeholder='cost'>
-					</div>
-					<div class="form-group">
-						<label for="cost_multiplier">Cost Multiplier *</label>
-						<input type="text" name="cost_multiplier" value="" class='form-control' v-model="fdata.cost_multiplier" v-on:keyup="check_form" placeholder=''>
-					</div>
-					<div class="form-group">
-						<label for="email">Price (computed)</label>
-						<div name="price" id="price">@{{ fdata.price }}</div>
-					</div>
-					<div class="form-group">
-						<label for="sku">SKU</label>
-						<input type="text" name="sku" value="" class='form-control' placeholder='SKU'>
-					</div>
-					<div class="form-group">
-						<label for="active">Active</label>
-						<input type="text" name="active" value="" class='form-control'>
-					</div>
-					<input type="submit" value="Submit" class="btn btn-primary" :disabled=fdata.disabled>
-				</form>
+		<form method='POST' action="{{ route('products.store') }}" name="F1" id="F1">
+			@csrf
+			@method('POST')
+			<div class="card">
+				<div class="card-header">Add New Product</div>
+				<div class="card-body">
+						<div v-if="errors.length" class="alert alert-warning">
+							<span class="lead">Some required data...</span>
+								<ul>
+									<li v-for="error in errors" class="list-unstyled"> @{{ error }}</li>
+								</ul>
+						</div>
+						<div class="form-group">
+							<label for="slug">Slug</label>
+							<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" v-on:keyup="check_form" placeholder='Slug' readonly>
+							<input type="hidden" name="slug" id="slug" v-model="fdata.slug">
+						</div>
+						<div class="form-group">
+							<label for="name">Name *</label>
+							<input type="text" name="name" value="" class='form-control' v-model="fdata.name" v-on:keyup="check_form" placeholder='Product Name'>
+						</div>
+						<div class="form-group">
+							<label for="description">Description</label>
+							<textarea name="description" value="" class='form-control' v-model="fdata.description" placeholder='Product Description'></textarea>
+						</div>
+						<div class="form-group">
+							<label for="cost">Cost *</label>
+							<input type="text" name="cost" value="" class='form-control' v-model="fdata.cost" v-on:keyup="check_form" placeholder='cost'>
+						</div>
+						<div class="form-group">
+							<label for="cost_multiplier">Cost Multiplier *</label>
+							<input type="text" name="cost_multiplier" value="" class='form-control' v-model="fdata.cost_multiplier" v-on:keyup="check_form" placeholder=''>
+						</div>
+						<div class="form-group">
+							<label for="email">Price (computed)</label>
+							<div name="price" id="price">@{{ fdata.price }}</div>
+						</div>
+						<div class="form-group">
+							<label for="sku">SKU</label>
+							<input type="text" name="sku" value="" class='form-control' placeholder='SKU'>
+						</div>
+						<div class="form-group">
+							<label for="active">Active</label>
+							<input type="checkbox" id="active" name="active" value="1" v-model="fdata.active">
+						</div>
+				</div>
 			</div>
-		</div>
+			<div class="card">
+				<div class="card-header">Product Categories</div>
+				<div class="card-body">
+					@foreach($product_categories as $cat) 
+						<div class="form-check checkbox">
+				   		<ul>
+								<li> <input class="form-check-input" type="checkbox" name="product_category[]" id="{{ $cat->id }}" value="{{$cat->id}}" v-model="checkedCats" v-on:change="check_form">{{ $cat->name }}</li> 
+							</ul>
+						</div>
+					@endforeach
+				</div>
+			</div>
+			<input type="submit" value="Submit" class="btn btn-primary" :disabled=fdata.disabled>
+			<br />
+			<br />
+		</form>
 		</div>
 	</div>
 
@@ -69,7 +83,7 @@
 			fdata : {
 				slug            : "{{ old('slug') }}",
 				name            : "{{ old('name') }}",
-				description     : "{{ old('description') }}",
+				// description     : "{{ old('description') }}",
 				cost            : "{{ old('cost') }}",
 				cost_multiplier : "{{ old('cost_multiplier') }}",
 				sku             : "{{ old('sku') }}",

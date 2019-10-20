@@ -27,7 +27,7 @@ class ProductCategoriesController extends Controller {
       $product_categories = ProductCategory::all();
       return view('admin.product_categories.index', compact('product_categories'));
 
-    }
+    } // index
 
     /**
      * Show the form for creating a new resource.
@@ -35,8 +35,10 @@ class ProductCategoriesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+
 		return view('admin.product_categories.create');
-    }
+
+    } // create
 
     /**
      * Store a newly created resource in storage.
@@ -62,7 +64,8 @@ class ProductCategoriesController extends Controller {
 	   $product_category->save();
 
 	   return redirect()->route('product_categories.index')->with('success', 'Product Category Saved');
-    }
+
+    } // store
 
     /**
      * Display the specified resource.
@@ -84,12 +87,9 @@ class ProductCategoriesController extends Controller {
     public function edit(ProductCategory $product_category) {
 
 		$this->check_permission('edit_product_categories');
-
-		// $product_category = ProductCatgory::findOrFail($id);
-
 		return view('admin.product_categories.edit', compact('product_category'));
 
-    }
+    } // edit
 
     /**
      * Update the specified resource in storage.
@@ -117,7 +117,7 @@ class ProductCategoriesController extends Controller {
 
 		return redirect()->route('product_categories.index')->with('success', 'Product Category Updated');
 
-    }
+    } // update
 
     /**
      * Remove the specified resource from storage.

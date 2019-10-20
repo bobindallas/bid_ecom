@@ -7,10 +7,11 @@
 
 	@section('content')
 	<div class="container">
-	@can('create_users')
-	 <div style="float:right;padding-right:20px;"><a href="{{ route('users.create') }}" title="Add New User"><i class="fa fa-plus-circle fa-2x"></i></a><br /><br /></div>
-	@endcan
+		<div class="card">
 		<div class="card-body">
+	@can('create_users')
+	 <div style="float:right;padding-right:20px;"><a href="{{ route('users.create') }}" title="Add New User"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br/>
+	@endcan
 			@if (count($users))
 		<table id="users" class="table table-hover table-responsive-sm table-sm">
 			<thead>
@@ -56,6 +57,7 @@
 		@else
 			<center>No Records Found...</center>
 		@endif
+		</div>
 		</div>
 	</div>
 		@stop

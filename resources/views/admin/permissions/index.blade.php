@@ -8,7 +8,7 @@
 @section('content')
 	<div class="container">
 		<div class="card">
-		<div class="card-body" style="background-color:white;">
+		<div class="card-body">
 	@can('create_permissions')
 		<div style="float:right;padding-right:20px;"><a href="{{ route('permissions.create') }}" title="Add New Permission"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br />
 	@endcan

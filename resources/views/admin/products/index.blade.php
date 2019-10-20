@@ -8,12 +8,12 @@
 @section('content')
 	<div class="container">
 		<div class="card">
-		<div class="card-body" style="background-color:white;">
+		<div class="card-body">
 	@can('create_products')
 		<div style="float:right;padding-right:20px;"><a href="{{ route('products.create') }}" title="Add New product"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br />
 	@endcan
 			@if (count($products))
-		<table id="products" class="table table-bordered table-hover compact">
+		<table id="products" class="table table-hover table-responsive-sm table-sm">
 			<thead>
 				<tr>
 					<th>ID</th>

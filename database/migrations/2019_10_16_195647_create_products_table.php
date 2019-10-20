@@ -19,11 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('name', 254)->default('');
             $table->text('description')->nullable();
             $table->string('sku',254)->nullable()->default('');
-            $table->decimal('cost', 10, 2)->default(0);
-            $table->float('cost_multiplier', 10, 4)->default(0);
+            $table->decimal('cost', 10, 2)->default(1);
+            $table->decimal('cost_multiplier', 10, 4)->default(1);
             $table->unsignedTinyInteger('active')->default(1);
             $table->timestamps();
-            $table->index('slug');
+
+            $table->unique('slug');
         });
     }
 

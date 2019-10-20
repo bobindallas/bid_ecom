@@ -7,10 +7,11 @@
 
 		@section('content')
 	<div class="container">
+	<div class="card">
+	<div class="card-body">
 	@can('create_roles')
 		<div style="float:right;padding-right:20px;"><a href="{{ route('roles.create') }}" title="Add New Role"><i class="fa fa-plus-circle fa-2x"></i></a><br /><br /></div>
 	@endcan
-		<div class="card-body">
 			@if (count($roles))
 		<table id="roles" class="table table-hover table-responsive-sm table-sm">
 			<thead>
@@ -55,6 +56,7 @@
 		@else
 			<center>No Records Found...</center>
 		@endif
+		</div>
 		</div>
 	</div>
 		@stop

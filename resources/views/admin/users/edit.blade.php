@@ -5,6 +5,9 @@
 @stop
 
 @section('content')
+<div class="container">
+		<div class="card">
+		<div class="card-body">
 	<form method='POST' action="{{route('users.update', $user->id)}}">
 		@csrf
 		@method('PUT')
@@ -29,4 +32,6 @@
 		<input type="submit" value="Submit" class="btn btn-primary">
 	</form>
 	</div>
+	</div>
+</div>
 @endsection
