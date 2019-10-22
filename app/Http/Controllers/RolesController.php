@@ -55,13 +55,12 @@ class RolesController extends Controller {
 		   'guard_name' => 'required'
 		]);
 		
-		$permissions      = $request->permissions;
+		$permissions      = $request->get('permissions', []);
 		$role             = new Role;
 		$role->name       = $request->input('name');
 		$role->guard_name = $request->input('guard_name');
 		$role->save();
 		
-		$permissions = $request->get('permissions', []);
 		$role->syncPermissions($permissions);
 
 		return redirect()->route('roles.index')->with('success', 'Role Saved');
@@ -89,7 +88,7 @@ class RolesController extends Controller {
 
 		$this->check_permission('edit_roles');
 
-		$role = Role::findOrFail($id);
+		$role        = Role::findOrFail($id);
 		$permissions = Permission::all();
 
 		return view('admin.roles.edit')->with([
@@ -110,12 +109,12 @@ class RolesController extends Controller {
 
 		$this->check_permission('edit_roles');
 
+		$permissions      = $request->get('permissions', []);
 		$role             = Role::findOrFail($id);
 		$role->name       = $request->name;
 		$role->guard_name = $request->guard_name;
 		$role->save();
 
-		$permissions = $request->get('permissions', []);
 		$role->syncPermissions($permissions);
 
 		return redirect()->route('roles.index')->with('success', 'Role Updated');
