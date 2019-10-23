@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Product;
 use App\Model\ProductCategory;
 use App\Model\CategoryHasProduct;
+use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller {
@@ -24,7 +25,7 @@ class ProductsController extends Controller {
 		$products = Product::all();
 		return view('admin.products.index', compact('products'));
 
-	}
+	} // index
 
 	/**
 	 * Show the form for creating a new resource.
@@ -35,7 +36,8 @@ class ProductsController extends Controller {
 
 		$product_categories = ProductCategory::all();
 		return view('admin.products.create', compact('product_categories'));
-	}
+
+	} // create
 
 	/**
 	 * Store a newly created resource in storage.
@@ -151,6 +153,159 @@ class ProductsController extends Controller {
 
 	} // update
 
+	/***
+	 * add a product image
+	 *
+	 * @param  \App\Model\Product  $product
+	 */
+	public function create_image(Product $product) {
+
+		return view('admin.products.image_create', compact('product'));
+	
+	} // create_image
+
+	/***
+	 * edit a product image
+	 *
+	 * @param  \App\Model\Product  $product
+	 */
+	public function edit_image(Product $product, $media_id) {
+
+		$product_media = $product->getMedia('product_images');
+
+		// https://github.com/spatie/laravel-medialibrary/issues/1228
+		$image = $product_media->where('id', $media_id)->first();
+
+		if (! $image) {
+			return abort(404);
+		}
+
+		return view('admin.products.image_edit', compact(
+			'product',
+			'image'
+		));
+	
+	} // edit_image
+
+	/***
+	 * product images - list view
+	 *
+	 * @param  \App\Model\Product  $product
+	 */
+	public function image_list(Product $product) {
+
+		$media = $product->getMedia('product_images');
+		// dd($media);
+		return view('admin.products.image_list', compact(
+			'product',
+			'media'
+		));
+	
+	} // image_list
+
+	/***
+	 * product images - grid view
+	 *
+	 * @param  \App\Model\Product  $product
+	 */
+	public function image_grid(Product $product) {
+
+		$media = $product->getMedia('product_images');
+		return view('admin.products.image_grid', compact(
+			'product',
+			'media'
+		));
+	
+	} // image_grid
+
+	/***
+	 * store a product image
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Model\Product  $product
+	 */
+	public function store_image(Request $request, Product $product) {
+
+		if($request->hasFile('image') && $request->file('image')->isValid()){
+			$product
+				->addMediaFromRequest('image')
+				->sanitizingFileName(function($fileName) {
+					return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
+				})
+				->withCustomProperties([
+					'title'   => $request->get('title'),
+					'alt_tag' => $request->get('alt_tag'),
+					'caption' => $request->get('caption'),
+					'active'  => $request->get('active') || 0
+				])
+				->toMediaCollection('product_images');
+		}
+
+		return redirect()->route('products.image_list', $product->id)->with('success', 'New Product Image Added');	
+
+	} // store_image
+
+	/**
+	 * update product image
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Model\Product  $product
+	 * @param  int $media_id
+	 */
+	public function update_image(Request $request, Product $product, $media_id) {
+
+		// FIXME: add validation & auth
+
+		$flash_msg = '';
+	
+		$product_media = $product->getMedia('product_images');
+
+		// https://github.com/spatie/laravel-medialibrary/issues/1228
+		$image = $product_media->where('id', $media_id)->first();
+
+		if ($request->get('product_image_delete')) {
+		
+			$image->delete();
+			$flash_msg = 'Product Image Deleted';
+
+		} else {
+
+			$image->setCustomProperty('title', $request->get('title'));
+			$image->setCustomProperty('alt_tag', $request->get('alt_tag'));
+			$image->setCustomProperty('caption', $request->get('caption'));
+			$image->setCustomProperty('active', $request->get('active') || 0);
+			$image->save();
+
+			$flash_msg = 'Product Image Updated';
+		}
+
+		return redirect()->route('products.image_list', $product->id)->with('success', $flash_msg);	
+
+	} // update_image
+
+	/**
+	 *
+	 * update product image display order
+	 *
+	 */
+
+	public function update_image_display_order(Request $request, Product $product) {
+
+		$fu = array_values(json_decode($request->get('item_order'), true));
+
+		// $fu = json_decode($request->get('item_order'), true);
+		// dd($fu);
+		// dd($request);
+
+		// $product_media = $product->getMedia('product_images');
+		// $product_media::setNewOrder($fu);
+		Media::setNewOrder($fu);
+		// $product_media->save();
+
+		return redirect()->route('products.image_list', $product->id)->with('success', 'Product Image Display Order Updated');	
+	
+	} // update_image_display_order
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -159,6 +314,6 @@ class ProductsController extends Controller {
 	 */
 	public function destroy(Product $product)
 	{
-		//
+		// not yet...
 	}
 }

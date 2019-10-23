@@ -18,11 +18,14 @@
 	<link href="{{ asset('vendor/coreui/css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('vendor/pace-progress/css/pace.min.css') }}" rel="stylesheet">
 	<!-- These need to be here for datatables to work -->
-	<script src="{{ asset('vendor/node_modules/jquery/dist/jquery.min.js') }}"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    {{--<script src="https://cdn.jsdelivr.net/npm/vue"></script> --}}
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
 	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js" integrity="sha256-kzv+r6dLqmz7iYuR2OdwUgl4X5RVsoENBzigdF5cxtU=" crossorigin="anonymous"></script> --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
    @stack('css')
    @yield('css')
   </head>
