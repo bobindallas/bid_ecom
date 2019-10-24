@@ -154,4 +154,15 @@ return [
         'perform_conversions' => Spatie\MediaLibrary\Jobs\PerformConversions::class,
         'generate_responsive_images' => Spatie\MediaLibrary\Jobs\GenerateResponsiveImages::class,
     ],
+
+	/*
+	 * Bob - 10/24/19
+	 * Rather than hard code my media collection names all over the place, set
+	 * them here so they can be easily updated later if needed.
+	 */
+	'collections' => [
+		'product_images'        => 'product_images',
+		'product_option_images' => 'product_option_images',
+
+	],
 ];

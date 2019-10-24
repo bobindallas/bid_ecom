@@ -98,10 +98,9 @@ class ProductsController extends Controller {
 	 * @param  \App\Model\Product  $product
 	 * @return \Illuminate\Http\Response
 	 */
-	// public function edit(Product $product) {
-	public function edit($id) {
+	public function edit($product_id) {
 
-		$product            = Product::with(['category_has_product'])->findOrFail($id);
+		$product            = Product::with(['category_has_product'])->findOrFail($product_id);
 		$product_categories = ProductCategory::all();
 
 		return view('admin.products.edit', compact(
@@ -171,14 +170,10 @@ class ProductsController extends Controller {
 	 */
 	public function edit_image(Product $product, $media_id) {
 
-		$product_media = $product->getMedia('product_images');
+		$product_media = $product->getMedia(config('medialibrary.collections.product_images'));
 
 		// https://github.com/spatie/laravel-medialibrary/issues/1228
-		$image = $product_media->where('id', $media_id)->first();
-
-		if (! $image) {
-			return abort(404);
-		}
+		if (! $image = $product_media->where('id', $media_id)->first()) { return abort(404); }
 
 		return view('admin.products.image_edit', compact(
 			'product',
@@ -233,7 +228,7 @@ class ProductsController extends Controller {
 					'caption' => $request->get('caption'),
 					'active'  => $request->get('active') || 0
 				])
-				->toMediaCollection('product_images');
+				->toMediaCollection(config('medialibrary.collections.product_images'));
 		}
 
 		return redirect()->route('products.image_list', $product->id)->with('success', 'New Product Image Added');	
@@ -253,7 +248,7 @@ class ProductsController extends Controller {
 
 		$flash_msg = '';
 	
-		$product_media = $product->getMedia('product_images');
+		$product_media = $product->getMedia(config('medialibrary.collections.product_images'));
 
 		// https://github.com/spatie/laravel-medialibrary/issues/1228
 		$image = $product_media->where('id', $media_id)->first();
@@ -288,14 +283,7 @@ class ProductsController extends Controller {
 
 		$fu = array_values(json_decode($request->get('item_order'), true));
 
-		// $fu = json_decode($request->get('item_order'), true);
-		// dd($fu);
-		// dd($request);
-
-		// $product_media = $product->getMedia('product_images');
-		// $product_media::setNewOrder($fu);
 		Media::setNewOrder($fu);
-		// $product_media->save();
 
 		return redirect()->route('products.image_list', $product->id)->with('success', 'Product Image Display Order Updated');	
 	

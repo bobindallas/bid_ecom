@@ -20,6 +20,12 @@ class Product extends Model implements HasMedia {
 		return $this->morphMany(Media::class, 'model');
 	}
 
+	public function registerMediaCollections() {
+	
+		$this->addMediaCollection(config('medialibrary.collections.product_images'))
+			->acceptsMimeTypes(['image/jpeg', 'image/gif', 'image/png']);
+	}
+
 	public function registerMediaConversions(Media $media = null) {
 	
 		$this->addMediaConversion('large')->width(1000)->height(1000)->sharpen(10);
