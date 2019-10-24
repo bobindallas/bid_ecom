@@ -100,7 +100,7 @@ class ProductsController extends Controller {
 	 */
 	public function edit($product_id) {
 
-		$product            = Product::with(['category_has_product'])->findOrFail($product_id);
+		$product            = Product::with(['category_has_product', 'product_attribute'])->findOrFail($product_id);
 		$product_categories = ProductCategory::all();
 
 		return view('admin.products.edit', compact(

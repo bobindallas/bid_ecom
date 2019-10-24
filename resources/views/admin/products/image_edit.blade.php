@@ -58,8 +58,7 @@
 			<input type="hidden" name="product_image_id" id="product_image_id" value="{{ $image->id }}">
 			<input type="hidden" name="product_image_delete" id="product_image_delete" v-model="fdata.delete" value=0>
 			<button type="submit" id="F1.submit" class="btn btn-primary" :disabled=fdata.disabled>Save</button>
-			<button type="button" name="delete" id="delete" class="btn btn-danger" :disabled=fdata.disabled
- onclick="if(window.confirm('Really delete this product image?')){ document.getElementById('product_image_delete').value = 1; F1.submit();}">delete</button>
+			<button type="button" name="delete" id="delete" class="btn btn-danger" :disabled=fdata.disabled onclick="if(window.confirm('Really delete this product image?')){ document.getElementById('product_image_delete').value = 1; F1.submit();}">delete</button>
 			</form>
 <br />
 	</div>

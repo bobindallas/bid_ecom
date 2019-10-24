@@ -67,6 +67,17 @@
 					@endforeach
 				</div>
 			</div>
+			<div class="card">
+				<div class="card-header">Product Attributes <span style="float:right;"><a href="{{ route('products.create_attribute', $product->id) }}" title="Add new product attribute"><i class="fa fa-plus-circle fa-2x"></i></a></span></div>
+				<div class="card-body">
+					@foreach($product->product_attribute as $attr) 
+						<div class="form-group">
+							<label for="{{ $attr->name }}">{{ $attr->name }} <a href="{{ route('products.edit_attribute', [$product->id, $attr->id]) }}" title="Edit product attribute"><i class="fa fa-pencil"></i></a></label>
+							<input type="text" name="{{ $attr->id }}" value="{{ $attr->attr_value}}" class='form-control' placeholder='' readonly>
+						</div>
+					@endforeach
+				</div>
+			</div>
 			<input type="submit" value="Submit" class="btn btn-primary" :disabled=fdata.disabled>
 			<br />
 			<br />

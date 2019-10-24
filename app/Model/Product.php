@@ -15,6 +15,10 @@ class Product extends Model implements HasMedia {
 		return $this->hasMany('App\Model\CategoryHasProduct');
 	}
 
+	public function product_attribute() {
+		return $this->hasMany('App\Model\ProductAttribute')->orderBy('display_order', 'asc');
+	}
+
 	public function media() {
 	
 		return $this->morphMany(Media::class, 'model');
