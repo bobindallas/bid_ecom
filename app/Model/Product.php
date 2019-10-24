@@ -15,6 +15,11 @@ class Product extends Model implements HasMedia {
 		return $this->hasMany('App\Model\CategoryHasProduct');
 	}
 
+	public function media() {
+	
+		return $this->morphMany(Media::class, 'model');
+	}
+
 	public function registerMediaConversions(Media $media = null) {
 	
 		$this->addMediaConversion('large')->width(1000)->height(1000)->sharpen(10);

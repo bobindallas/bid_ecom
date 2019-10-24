@@ -192,15 +192,12 @@ class ProductsController extends Controller {
 	 *
 	 * @param  \App\Model\Product  $product
 	 */
-	public function image_list(Product $product) {
+	public function image_list($product_id) {
 
-		$media = $product->getMedia('product_images');
-		// dd($media);
-		return view('admin.products.image_list', compact(
-			'product',
-			'media'
-		));
-	
+		if (! $product = Product::with('media')->find($product_id)) { return abort(404); };
+		
+		return view('admin.products.image_list', compact('product')); 
+
 	} // image_list
 
 	/***
@@ -208,13 +205,11 @@ class ProductsController extends Controller {
 	 *
 	 * @param  \App\Model\Product  $product
 	 */
-	public function image_grid(Product $product) {
+	public function image_grid($product_id) {
 
-		$media = $product->getMedia('product_images');
-		return view('admin.products.image_grid', compact(
-			'product',
-			'media'
-		));
+		if (! $product = Product::with('media')->find($product_id)) { return abort(404); };
+
+		return view('admin.products.image_grid', compact('product'));
 	
 	} // image_grid
 

@@ -18,7 +18,7 @@
 <span style="padding-left:10px;"></span>
 <a href="{{ route('products.image_list', $product->id ) }}" title="List View"><i class="fa fa-bars fa-2x"></i></a>
 		<div class="card-body">
-		@if (count($media))
+		@if (count($product->media))
 		  <table id="product_images" class="table table-hover table-responsive-sm table-sm">
 			<thead>
 			<tr>
@@ -32,7 +32,7 @@
 			</tr>
 			</thead>
 			<tbody>
-					@foreach($media as $image)
+					@foreach($product->media as $image)
 	 			   <tr>
 	 				 <td>{{ $image->id }}</td>
 	 				 <td>{{ $image->order_column }}</td>
