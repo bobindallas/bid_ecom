@@ -24,9 +24,19 @@ Route::prefix('admin')->group(function () {
 	Route::resource('product_categories','ProductCategoriesController');
 	Route::resource('products','ProductsController');
 	Route::resource('product_attributes','ProductAttributesController');
+	Route::resource('product_options','ProductOptionsController');
+	Route::resource('product_option_items','ProductOptionItemsController');
 
 	// custom routes
-	
+	Route::get('products/{product}/product_options', 'ProductOptionsController@index')->name('products.product_options');
+	Route::get('products/{product}/create_product_option', 'ProductOptionsController@create')->name('products.create_product_option');
+	Route::get('products/{product}/edit_product_option/{product_option}', 'ProductOptionsController@edit')->name('products.edit_product_option');
+	Route::get('products/{product}/product_option_items/{product_option}', 'ProductOptionItemsController@index')->name('products.product_option_items');
+
+	Route::get('product_options/{product_option}/create_product_option_item', 'ProductOptionItemsController@create')->name('product_options.create_product_option_item');
+	Route::get('product_options/{product_option}/edit_product_option_item/{product_option_item}', 'ProductOptionItemsController@edit')->name('product_options.edit_product_option_item');
+	Route::put('product_options/{product_option}/update_product_option_item/{product_option_item}', 'ProductOptionItemsController@update')->name('product_options.update_product_option_item');
+
 	Route::get('products/{product}/create_attribute', 'ProductAttributesController@create')->name('products.create_attribute');
 	Route::get('products/{product}/edit_attribute/{product_attribute}', 'ProductAttributesController@edit')->name('products.edit_attribute');
 

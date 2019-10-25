@@ -33,7 +33,10 @@
 					<td>
 					{{-- <a href="{{ route('products.show', ['product' => $product->id]) }}" title="View product Details"><i class="fa fa-info-circle fa-2x"></i></a>&nbsp;&nbsp; --}}
 					@can('edit_products')
-					<button><a href="{{ route('products.edit', ['product' => $product->id]) }}" title="Edit product Details"><i class="fa fa-pencil-square fa-2x"></i></a></button>&nbsp;&nbsp;
+					<a href="{{ route('products.edit', ['product' => $product->id]) }}" title="Edit product Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
+					@endcan
+					@can('edit_products')
+					<form method="post" id="F1" name="F1" action="{{ route('products.destroy', ['product' => $product->id]) }}" style="display:inline;">@csrf @method('DELETE')<a onclick="if(confirm('Really delete this product?\nConsider making it inactive instead.')) { this.parentNode.submit(); }" title="Delete this Product"><i class="fa fa-trash fa-2x" style="color:red;"></i></a></form>
 					@endcan
 				{{-- <a href="{{ route('products.destroy', ['product' => $product->id]) }}" title="Remove product"><i class="fa fa-trash fa-2x"></i></a> --}}
 				</td>

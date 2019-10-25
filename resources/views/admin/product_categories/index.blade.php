@@ -38,7 +38,7 @@
 					<td>
 					{{-- <a href="{{ route('product_categories.show', ['product_category' => $product_category->id]) }}" title="View Product Category Details"><i class="fa fa-info-circle fa-2x"></i></a>&nbsp;&nbsp; --}}
 					@can('edit_product_categories')
-					<button><a href="{{ route('product_categories.edit', ['product_category' => $product_category->id]) }}" title="Edit Product Category Details"><i class="fa fa-pencil-square fa-2x"></i></a></button>&nbsp;&nbsp;
+					<a href="{{ route('product_categories.edit', ['product_category' => $product_category->id]) }}" title="Edit Product Category Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 				{{-- <a href="{{ route('product_categories.destroy', ['product_category' => $product_category->id]) }}" title="Remove Product Category"><i class="fa fa-trash fa-2x"></i></a> --}}
 				</td>

@@ -161,8 +161,9 @@ return [
 	 * them here so they can be easily updated later if needed.
 	 */
 	'collections' => [
-		'product_images'        => 'product_images',
-		'product_option_images' => 'product_option_images',
-
+		'product_category_images'    => 'product_category_images',
+		'product_images'             => 'product_images',
+		'product_option_images'      => 'product_option_images',
+		'product_option_item_images' => 'product_option_item_images',
 	],
 ];
