@@ -1,4 +1,5 @@
 # BID Ecommerce - a basic Laravel Ecommerce app
+# This is an Unfinished Work in Progress project - review the code but don't deploy it
 
 This is a basic ecommerce app that I started a while back for a former client.  They decided to go in a different direction but I kept working on it a bit over time.  The original app was written in CakePHP but I have since moved over to Laravel as my preferred platorm (no offense to Cake - it's a great platform too).
 
