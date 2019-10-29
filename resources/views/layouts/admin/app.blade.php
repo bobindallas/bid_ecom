@@ -41,7 +41,7 @@
 	<script src="{{ asset('vendor/coreui/js/jquery-ui.1.12.1.min.js') }}"></script>
    <script src="{{ asset('vendor/coreui/js/vue.2.6.10.js') }}"></script>
 	<script src="{{ asset('vendor/coreui/js/datatables.1.1.20.min.js') }}"></script>
-	<script src="{{ asset('vendor/coreui/js/ckeditor.4.13.0.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/js/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{ asset('vendor/coreui/js/lodash.4.17.15.min.js') }}"></script>
 
    @stack('css')
