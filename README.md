@@ -13,10 +13,11 @@ We're using:
 #### Install Instructions:
 
 1) clone repo
-2) composer install (or update to pull the latest versions - recommended) - install the rest of the required code
+2) composer install (or update to pull the latest - recommended) - install the rest of the required code
 3) create your database (mysql)
 4) copy .env.example to .env
 5) php artisan key:generate - set the application key 
+5) php artisan storage:link - not needed here but recommended for standard Laravel install
 6) edit .env to set your db name and credentials
 7) php artisan:migrate (or migrate:[re]fresh to clear tables) - run migrations to create tables
 8) optionally edit databases/seeds/UsersTableSeeder.php to add / change the default users prior to seeding.  Leave the default Roles and Permissions as you can edit them later.
