@@ -13,17 +13,18 @@ We're using:
 #### Install Instructions:
 
 1) clone repo
-2) composer update - install the rest of the required code
+2) composer install (or update to pull the latest versions - recommended) - install the rest of the required code
 3) create your database (mysql)
 4) copy .env.example to .env
 5) php artisan key:generate - set the application key 
 6) edit .env to set your db name and credentials
-7) php artisan:migrate (or migrate:refresh to clear tables) - run migrations to create tables
+7) php artisan:migrate (or migrate:[re]fresh to clear tables) - run migrations to create tables
 8) optionally edit databases/seeds/UsersTableSeeder.php to add / change the default users prior to seeding.  Leave the default Roles and Permissions as you can edit them later.
 9) php artisan db:seed - this will give you the option to run migrate:refresh
 10) login using default Superuser account =>  login: super@email.com password: secret
 
 #### Notes:
+* Superuser role ignores permissions - Check app/Providers/AuthServiceProvider.php
 * In the App/Controller base class is a function called check_permission that checks permissions for various actions on controllers.  You can edit this to always return true for development to turn off permission checks. 
 
 #### License:
