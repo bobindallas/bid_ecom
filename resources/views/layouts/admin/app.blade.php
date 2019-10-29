@@ -10,22 +10,40 @@
 	<link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}" sizes="any" />
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
 
-	<link href="{{ asset('vendor/coreui/node_modules/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('vendor/coreui/node_modules/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('vendor/coreui/node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('vendor/coreui/node_modules/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+	{{-- <link href="{{ asset('vendor/coreui/node_modules/@coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet"> --}}
+	{{--<link href="{{ asset('vendor/coreui/node_modules/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet"> --}}
+	{{-- <link href="{{ asset('vendor/coreui/node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> --}}
+	{{-- <link href="{{ asset('vendor/coreui/node_modules/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet"> --}}
+
+	<link href="{{ asset('vendor/coreui/icons/css/coreui-icons.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('vendor/coreui/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('vendor/coreui/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('vendor/coreui/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+
 	<!-- Main styles for this application-->
 	<link href="{{ asset('vendor/coreui/css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('vendor/pace-progress/css/pace.min.css') }}" rel="stylesheet">
 	<!-- These need to be here for datatables to work -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-   {{--<script src="https://cdn.jsdelivr.net/npm/vue"></script> --}}
-	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
-	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+	{{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> --}}
+	{{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> --}}
 	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js" integrity="sha256-kzv+r6dLqmz7iYuR2OdwUgl4X5RVsoENBzigdF5cxtU=" crossorigin="anonymous"></script> --}}
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script> --}}
+	{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script> --}}
+	{{-- <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script> --}}
+   {{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --}}
+
+	{{-- dev version if needed --}}
+	{{-- <script src="{{ asset('vendor/coreui/js/jquery-3.4.1.js') }}" ></script> --}}
+	{{-- <script src="{{ asset('vendor/coreui/js/lodash.4.17.15.js') }}"></script> --}}
+
+	<script src="{{ asset('vendor/coreui/js/jquery-3.4.1.min.js') }}" ></script>
+	<script src="{{ asset('vendor/coreui/js/jquery-ui.1.12.1.min.js') }}"></script>
+   <script src="{{ asset('vendor/coreui/js/vue.2.6.10.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/js/datatables.1.1.20.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/js/ckeditor.4.13.0.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/js/lodash.4.17.15.min.js') }}"></script>
+
    @stack('css')
    @yield('css')
   </head>
@@ -691,6 +709,8 @@
 	@stack('js')
 	@yield('js')
 	<!-- CoreUI and necessary plugins-->
+
+{{--
 	<script src="{{ asset('vendor/node_modules/popper.js/dist/umd/popper.min.js') }}"></script>
 	<script src="{{ asset('vendor/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('vendor/node_modules/pace-progress/pace.min.js') }}"></script>
@@ -700,5 +720,17 @@
 	<script src="{{ asset('vendor/node_modules/chart.js/dist/Chart.min.js') }}"></script>
 	<script src="{{ asset('vendor/node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js') }}"></script>
 	<script src="{{ asset('vendor/coreui/js/main.js') }}"></script>
+--}}
+
+	<script src="{{ asset('vendor/coreui/popper.js/dist/umd/popper.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/pace-progress/pace.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/coreui/dist/js/coreui.min.js') }}"></script>
+	<!-- Plugins and scripts required by this view-->
+	<script src="{{ asset('vendor/coreui/chart.js/dist/Chart.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js') }}"></script>
+	<script src="{{ asset('vendor/coreui/js/main.js') }}"></script>
+
   </body>
 </html>

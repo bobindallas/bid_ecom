@@ -1,7 +1,7 @@
 @extends(config('view.ADMIN_LAYOUT'))
 
 @section('content_header')
-	{{ Breadcrumbs::render('product_options.product_option_edit', ['product' => $product, 'product_option' => $product_option]) }}
+	{{ Breadcrumbs::render('products.product_option_edit', $product, $product_option) }}
 @stop
 
 @section('content')
