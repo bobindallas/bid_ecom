@@ -14,18 +14,11 @@ class ProductOptionItemsController extends Controller {
 	*
 	* @return \Illuminate\Http\Response
 	*/
-	public function index(int $product, int $product_option) {
+	public function index(int $product_option_id) {
 
-		// dd($product_option);
-
-		// $product = Product::with(['product_option', 'product_option.product_option_item'])->find($product);
-		$product = Product::where('id', $product)->first();
-		$product_option = ProductOption::with(['product_option_item'])->where('id', $product_option)->first();
-		// dd($product_option);
-		// dd($product);
+		if(! $product_option = ProductOption::with(['product', 'product_option_item'])->where('id', $product_option_id)->first()) { return abort(404); }
 
 		return view('admin.product_option_items.index', compact(
-			'product',
 			'product_option'
 		));
 
@@ -36,8 +29,10 @@ class ProductOptionItemsController extends Controller {
 	*
 	* @return \Illuminate\Http\Response
 	*/
-	public function create(ProductOption $product_option) {
+	// public function create(ProductOption $product_option) {
+	public function create(int $product_option_id) {
 
+		$product_option = ProductOption::with(['product'])->where('id', $product_option_id)->first();
 		return view('admin.product_option_items.create', compact('product_option'));
 
 	} // create
@@ -87,7 +82,7 @@ class ProductOptionItemsController extends Controller {
 	* @param  \App\Model\ProductOptionItem  $productOptionItem
 	* @return \Illuminate\Http\Response
 	*/
-	public function edit(int $product_option_id, int $product_option_item_id) {
+	public function edit(int $product_option_item_id) {
 
 		// FIXME val & auth
 

@@ -27,10 +27,16 @@ Breadcrumbs::for('products.product_option_index', function ($trail, $product, $p
 
 // Home > product option > product_option items
 Breadcrumbs::for('products.product_option_items', function ($trail, $product, $product_option) {
-	// dd($product_option);
-	// $trail->parent('products.product_options', $product);
-	$trail->parent('products.product_option_edit', $product, $product_option);
-	// $trail->push($product_option->name);
+	$trail->parent('products.product_options', $product);
+	$trail->push($product_option->name, route('products.product_options', $product));
 	$trail->push('Product Option Items');
+});
+
+// Home > product_option > product_option_item > Edit
+Breadcrumbs::for('products.product_option_item_edit', function ($trail, $product, $product_option, $product_option_item) {
+	$trail->parent('products.product_options', $product);
+	$trail->push($product_option->name, route('products.product_options', $product));
+	// $trail->parent('products.product_option_items', $product, $product_option);
+	$trail->push($product_option_item->name);
 });
 

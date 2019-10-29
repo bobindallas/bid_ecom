@@ -2,6 +2,7 @@
 
 @section('content_header')
 	{{-- Breadcrumbs::render('product_option_items.create') --}}
+	{{ Breadcrumbs::render('products.product_option_index', $product) }}
 @stop
 
 @section('content')

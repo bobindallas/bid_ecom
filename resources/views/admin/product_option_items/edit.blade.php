@@ -1,16 +1,17 @@
 @extends(config('view.ADMIN_LAYOUT'))
 
 @section('content_header')
-	{{-- Breadcrumbs::render('products.option_item_edit', $product) --}}
+	{{-- Breadcrumbs::render('products.product_option_item_edit', $product) --}}
+	{{ Breadcrumbs::render('products.product_option_item_edit', $product_option_item->product_option->product, $product_option_item->product_option, $product_option_item) }}
 @stop
 
 @section('content')
 	<div class="container">
 		<div id="plist">
 		<div class="card">
-			<div class="card-header">Edit Product Option Item : {{ $option_item->product_option->name }} &raquo; {{ $option_item->name }}</div>
+			<div class="card-header">Edit Product Option Item : {{ $product_option_item->product_option->name }} &raquo; {{ $product_option_item->name }}</div>
 			<div class="card-body">
-				<form method='POST' action="{{ route('product_option_items.update', $option_item->id) }}" name="F1" id="F1">
+				<form method='POST' action="{{ route('product_option_items.update', $product_option_item->id) }}" name="F1" id="F1">
 					@csrf
 					@method('PUT')
 					<div v-if="errors.length" class="alert alert-warning">
@@ -34,7 +35,7 @@
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>
-						<textarea name="description" value="" class='form-control' placeholder=''>{{ $option_item->description }}</textarea>
+						<textarea name="description" value="" class='form-control' placeholder=''>{{ $product_option_item->description }}</textarea>
 					</div>
                   <div class="form-group">
                      <label for="display_order">Display Order *</label>
@@ -47,8 +48,8 @@
 						<input type="checkbox" id="active" name="active" value="1" v-model="fdata.active">
 					</div>
 					<input type="submit" value="Submit" class="btn btn-primary" :disabled=fdata.disabled>
-					<input type="hidden" name="product" id="product" value="{{ $option_item->product_option->product->id }}">
-					<input type="hidden" name="product_option" id="product_option" value="{{ $option_item->product_option->id }}">
+					<input type="hidden" name="product" id="product" value="{{ $product_option_item->product_option->product->id }}">
+					<input type="hidden" name="product_option" id="product_option" value="{{ $product_option_item->product_option->id }}">
 				</form>
 			</div>
 		</div>
@@ -68,11 +69,11 @@
 			'dsp_ord' : fu1,
 	
 			fdata : {
-				slug            : "{{ $option_item->slug }}",
-				name            : "{{ $option_item->name }}",
-				value           : "{{ $option_item->value }}",
-				display_order   : "{{ $option_item->display_order }}",
-				active          : {{ $option_item->active }},
+				slug            : "{{ $product_option_item->slug }}",
+				name            : "{{ $product_option_item->name }}",
+				value           : "{{ $product_option_item->value }}",
+				display_order   : "{{ $product_option_item->display_order }}",
+				active          : {{ $product_option_item->active }},
 				disabled        : true,
 			},
 
