@@ -18,12 +18,12 @@ class ProductOptionsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($product_id) {
+    public function index(int $product_id) {
 
 		 $product = Product::with(['product_option'])->findOrFail($product_id);
-
 		 return view('admin.product_options.index', compact('product'));
-    }
+
+    } // index
 
     /**
      * Show the form for creating a new resource.
@@ -32,10 +32,9 @@ class ProductOptionsController extends Controller {
      */
     public function create(Product $product) {
 
-		 // dd($product);
 		 return view('admin.product_options.create', compact('product'));
 
-    }
+    } // create
 
     /**
      * Store a newly created resource in storage.
@@ -47,8 +46,8 @@ class ProductOptionsController extends Controller {
 
 		 // FIXME - add val & auth
 
-		 // dd($request);
-		 //
+		// dd($request);
+
 		 $product_option = new ProductOption();
 
 		 $product_option->product_id    = $request->get('product');
@@ -60,9 +59,9 @@ class ProductOptionsController extends Controller {
 
 		 $product_option->save();
 
-		 return redirect()->route('products.product_options', $request->get('product'))->with('success', 'Product Option Saved');
+		 return redirect()->route('product_options.index', $request->get('product'))->with('success', 'Product Option Saved');
 
-    }
+    } // store
 
     /**
      * Display the specified resource.
@@ -81,16 +80,13 @@ class ProductOptionsController extends Controller {
      * @param  \App\Model\ProductOption  $productOption
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product, ProductOption $product_option) {
+    public function edit(int $product_option_id) {
 
-		// dd($product);
-		// dd($product_option);
+		$product_option = ProductOption::with('product')->findOrFail($product_option_id);
 
-		 return view('admin.product_options.edit', compact(
-			 'product',
-			 'product_option'
-		 ));
-    }
+		return view('admin.product_options.edit', compact('product_option'));
+
+    } // edit
 
     /**
      * Update the specified resource in storage.
@@ -99,10 +95,9 @@ class ProductOptionsController extends Controller {
      * @param  \App\Model\ProductOption  $productOption
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductOption $product_option) {
+    public function update(Request $request, int $product_option_id) {
 
-		 // dd($product_option);
-		 // dd($request);
+		 $product_option = ProductOption::with('product')->findOrFail($product_option_id);
 
 		 $product_option->slug          = $request->get('slug');
 		 $product_option->name          = $request->get('name');
@@ -112,11 +107,12 @@ class ProductOptionsController extends Controller {
 
 		 $product_option->save();
 
-		 return redirect()->route('products.product_options', [
-			 'product'        => $request->get('product'), 
-			 'product_option' => $request->get('product_option')
+		 return redirect()->route('product_options.index', [
+			 'product'        => $product_option->product->id,
+			 'product_option' => $product_option->id
 		 ])->with('success', 'Product Option Saved');
-    }
+
+    } // edit
 
     /**
      * Remove the specified resource from storage.
@@ -128,4 +124,5 @@ class ProductOptionsController extends Controller {
     {
         //
     }
-}
+
+} // class

@@ -2,7 +2,7 @@
 @section('title', 'product_option_items')
 
 @section('content_header')
-   {{ Breadcrumbs::render('products.product_option_items', $product_option->product, $product_option) }}
+   {{ Breadcrumbs::render('product_option_items.index', $product_option) }}
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 		<a href="#" title="Grid View"><i class="fa fa-th fa-2x" style="color: #ccc;"></i></a>
 		<span style="padding-left:10px;"></span>
 		<a href="#" title="List View"><i class="fa fa-bars fa-2x"></i></a>
-		<div style="float:right;padding-right:20px;"><a href="{{ route('product_options.create_product_option_item', $product_option->id) }}" title="Add new product option item"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br />
+		<div style="float:right;padding-right:20px;"><a href="{{ route('product_option_items.create', $product_option->id) }}" title="Add new product option item"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br />
 	@endcan
 			@if (count($product_option->product_option_item))
 		<table id="product_option_items" class="table table-hover table-responsive-sm table-sm">
@@ -37,7 +37,7 @@
 					<td>@if($option_item->active ) <i class="fa fa-check-square-o fa-lg" style="color:green;"></i> @else <i class="fa fa-square-o fa-lg" style="color:red;"></i> @endif</td>
 					<td>
 					@can('edit_product_option_items')
-					<a href="{{ route('product_options.edit_product_option_item', ['product_option_item' => $option_item->id]) }}" title="Edit Product Option Item Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
+					<a href="{{ route('product_option_items.edit', ['product_option_item' => $option_item->id]) }}" title="Edit Product Option Item Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 					@can('edit_product_option_item_images')
 					<a href="{{ route('product_option_items.edit', ['product_option_item' => $option_item->id]) }}" title="Edit Product Option Images"><i class="fa fa-file-image-o fa-2x"></i></a>&nbsp;&nbsp;

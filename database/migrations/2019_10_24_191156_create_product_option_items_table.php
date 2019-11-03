@@ -11,8 +11,8 @@ class CreateProductOptionItemsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
+
         Schema::create('product_option_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_option_id');

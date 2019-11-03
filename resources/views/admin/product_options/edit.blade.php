@@ -1,13 +1,13 @@
 @extends(config('view.ADMIN_LAYOUT'))
 
 @section('content_header')
-	{{ Breadcrumbs::render('products.product_option_edit', $product, $product_option) }}
+	{{ Breadcrumbs::render('product_options.edit', $product_option->product, $product_option) }}
 @stop
 
 @section('content')
 	<div class="container">
 		<div id="plist">
-		@include('inc.admin.product_tabs', ['active' => 'options', 'product' => $product])
+		@include('inc.admin.product_tabs', ['active' => 'options', 'product' => $product_option->product])
 		<div class="card">
 			<div class="card-header">Edit Product Option : {{ $product_option->name }}</div>
 			<div class="card-body">
@@ -48,7 +48,7 @@
 						<input type="checkbox" id="active" name="active" value="1" v-model="fdata.active">
 					</div>
 					<input type="submit" value="Submit" class="btn btn-primary" :disabled=fdata.disabled>
-					<input type="hidden" name="product" id="product" value="{{ $product->id }}">
+					<input type="hidden" name="product" id="product" value="{{ $product_option->product->id }}">
 				</form>
 			</div>
 		</div>

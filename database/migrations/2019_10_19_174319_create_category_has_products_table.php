@@ -6,32 +6,32 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCategoryHasProductsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up() {
+	 /**
+	  * Run the migrations.
+	  *
+	  * @return void
+	  */
+	 public function up() {
 
-        Schema::create('category_has_products', function (Blueprint $table) {
+		  Schema::create('category_has_products', function (Blueprint $table) {
 
-            $table->bigIncrements('id');
+				$table->bigIncrements('id');
 				$table->unsignedBigInteger('product_category_id');
 				$table->unsignedBigInteger('product_id');
-            $table->timestamps();
+				$table->timestamps();
 
 				$table->index('product_category_id');
 				$table->index('product_id');
-        });
-    }
+		  });
+	 }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('category_has_products');
-    }
+	 /**
+	  * Reverse the migrations.
+	  *
+	  * @return void
+	  */
+	 public function down()
+	 {
+		  Schema::dropIfExists('category_has_products');
+	 }
 }

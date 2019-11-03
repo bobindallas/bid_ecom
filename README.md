@@ -5,10 +5,11 @@ This is a basic ecommerce app that I started a while back for a former client.  
 
 We're using:
 
-* Laravel 6 => https://laravel.com/docs/6.x along with it's associated  [requirements](https://laravel.com/docs/6.x#server-requirements) 
+* Laravel 6 => https://laravel.com/docs/6.x along with it's associated [requirements](https://laravel.com/docs/6.x#server-requirements) 
 * Spatie Permissions => https://github.com/spatie/laravel-permission
 * Spatie Media Library => https://github.com/spatie/laravel-medialibrary
 * Laravel Breadcrumbs => https://github.com/davejamesmiller/laravel-breadcrumbs
+* Coreui => https://coreui.io/ for the admin interface
 * Not included here but recommended for development is [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
 
 #### Install Instructions:

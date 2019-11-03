@@ -4,7 +4,6 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CategoryHasProduct extends Model
-{
-    //
+class CategoryHasProduct extends Model {
+
 }

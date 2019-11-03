@@ -2,7 +2,7 @@
 
 @section('content_header')
 	{{-- Breadcrumbs::render('products.product_option_item_edit', $product) --}}
-	{{ Breadcrumbs::render('products.product_option_item_edit', $product_option_item->product_option->product, $product_option_item->product_option, $product_option_item) }}
+	{{ Breadcrumbs::render('product_option_items.edit', $product_option_item->product_option->product, $product_option_item->product_option, $product_option_item) }}
 @stop
 
 @section('content')

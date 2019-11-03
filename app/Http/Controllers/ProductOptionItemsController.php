@@ -29,10 +29,9 @@ class ProductOptionItemsController extends Controller {
 	*
 	* @return \Illuminate\Http\Response
 	*/
-	// public function create(ProductOption $product_option) {
 	public function create(int $product_option_id) {
 
-		$product_option = ProductOption::with(['product'])->where('id', $product_option_id)->first();
+		if (! $product_option = ProductOption::with(['product'])->where('id', $product_option_id)->first()) { return abort(404); }
 		return view('admin.product_option_items.create', compact('product_option'));
 
 	} // create
@@ -46,6 +45,7 @@ class ProductOptionItemsController extends Controller {
 	public function store(Request $request) {
 
 		 // FIXME add val & auth
+		dd($request);
 
 		 $product_option_item = new ProductOptionItem();
 
@@ -59,7 +59,7 @@ class ProductOptionItemsController extends Controller {
 
 		 $product_option_item->save();
 
-		 return redirect()->route('products.product_option_items',
+		 return redirect()->route('product_option_items.index',
 			 ['product' => $request->get('product'), 'product_option' => $request->get('product_option')])
 			 ->with('success', 'New Product Option Item Added');
 
@@ -99,7 +99,9 @@ class ProductOptionItemsController extends Controller {
 	* @param  \App\Model\ProductOptionItem  $productOptionItem
 	* @return \Illuminate\Http\Response
 	*/
-	public function update(Request $request, ProductOptionItem $product_option_item) {
+	public function update(Request $request, int $product_option_item_id) {
+
+		$product_option_item = ProductOptionItem::with('product_option', 'product_option.product')->findOrFail($product_option_item_id);
 
 		$product_option_item->slug          = $request->get('slug');
 		$product_option_item->name          = $request->get('name');
@@ -109,9 +111,7 @@ class ProductOptionItemsController extends Controller {
 
 		$product_option_item->save();
 
-		 return redirect()->route('products.product_option_items',
-			 ['product' => $request->get('product'), 'product_option' => $request->get('product_option')])
-			 ->with('success', 'Product Option Item Updated');
+		return redirect()->route('product_option_items.index', $product_option_item->product_option)->with('success', 'Product Option Item Updated');
 	}
 
 	/**

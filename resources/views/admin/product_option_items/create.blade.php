@@ -1,8 +1,7 @@
 @extends(config('view.ADMIN_LAYOUT'))
 
 @section('content_header')
-	{{-- Breadcrumbs::render('product_option_items.create') --}}
-	{{ Breadcrumbs::render('products.product_option_index', $product) }}
+	{{ Breadcrumbs::render('product_option_items.create', $product_option) }}
 @stop
 
 @section('content')
@@ -11,7 +10,7 @@
 		<div class="card">
 			<div class="card-header">{{ $product_option->name }} : Add New Option Item</div>
 			<div class="card-body">
-				<form method='POST' action="{{ route('product_option_items.store') }}" name="F1" id="F1">
+				<form method='POST' action="{{ route('product_option_items.store', $product_option) }}" name="F1" id="F1">
 					@csrf
 					@method('POST')
 					<div v-if="errors.length" class="alert alert-warning">
