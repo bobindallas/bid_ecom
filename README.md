@@ -30,6 +30,10 @@ We're using:
 * Superuser role ignores permissions - Check app/Providers/AuthServiceProvider.php
 * In the App/Controller base class is a function called check_permission that checks permissions for various actions on controllers.  You can edit this to always return true for development to turn off permission checks. 
 
+#### TODO
+
+* Factorys to gin some sample products
+
 #### License:
 
 [MIT license](http://opensource.org/licenses/MIT)
