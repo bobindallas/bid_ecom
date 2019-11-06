@@ -40,7 +40,7 @@
 					<a href="{{ route('product_option_items.edit', ['product_option_item' => $option_item->id]) }}" title="Edit Product Option Item Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 					@can('edit_product_option_item_images')
-					<a href="{{ route('product_option_items.edit', ['product_option_item' => $option_item->id]) }}" title="Edit Product Option Images"><i class="fa fa-file-image-o fa-2x"></i></a>&nbsp;&nbsp;
+					<a href="{{ route('product_option_item_images.index_list', ['product_option_item' => $option_item->id]) }}" title="Edit Product Option Images"><i class="fa fa-file-image-o fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 					@can('delete_product_option_items')
 						<form method="post" id="F1" name="F1" action="{{ route('product_option_items.destroy', ['product_option_item' => $option_item->id]) }}" style="display:inline;">@csrf @method('DELETE')<a onclick="if(confirm('Really delete this product option?')) { this.parentNode.submit(); }" title="Delete this Product Option"><i class="fa fa-trash fa-2x" style="color:red;"></i></a></form>

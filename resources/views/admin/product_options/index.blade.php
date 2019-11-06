@@ -41,7 +41,7 @@
 					<a href="{{ route('product_options.edit', $product_option->id) }}" title="Edit Product Option Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 					@can('edit_product_option_images')
-					<a href="{{ route('product_options.edit', ['product_option' => $product_option->id]) }}" title="Edit Product Option Images"><i class="fa fa-file-image-o fa-2x"></i></a>&nbsp;&nbsp;
+					<a href="{{ route('product_option_images.index_list', ['product_option' => $product_option->id]) }}" title="Edit Product Option Images"><i class="fa fa-file-image-o fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 					@can('edit_product_option_items')
 					<a href="{{ route('product_option_items.index', ['product_option' => $product_option->id]) }}" title="Edit Product Option Items"><i class="fa fa-list fa-2x"></i></a>&nbsp;&nbsp;
