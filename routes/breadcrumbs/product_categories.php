@@ -3,7 +3,7 @@
 // Home > product_categories
 Breadcrumbs::for('product_categories.index', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('product_categories', route('product_categories.index'));
+    $trail->push('Product Categories', route('product_categories.index'));
 });
 
 // Home > product_categories > Create

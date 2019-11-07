@@ -46,6 +46,16 @@ Route::prefix('admin')->group(function () {
 	Route::put( 'product_images/{product}/update/{media_id}','ProductImagesController@update')->name('product_images.update');
 	Route::put( 'product_images/{product}/update_display_order','ProductImagesController@update_display_order')->name('product_images.update_display_order');
 
+	// Product Category Images
+	Route::get( 'product_category_images/{product_category}/index_list','ProductCategoryImagesController@index_list')->name('product_category_images.index_list');
+	Route::get( 'product_category_images/{product_category}/index_grid','ProductCategoryImagesController@index_grid')->name('product_category_images.index_grid');
+	Route::get( 'product_category_images/{product_category}/create', 'ProductCategoryImagesController@create')->name('product_category_images.create');
+	Route::post('product_category_images/{product_category}/store', 'ProductCategoryImagesController@store')->name('product_category_images.store');
+	Route::get( 'product_category_images/{product_category}/edit/{media_id}', 'ProductCategoryImagesController@edit')->name('product_category_images.edit');
+	Route::put( 'product_category_images/{product_category}/update/{media_id}', 'ProductCategoryImagesController@update')->name('product_category_images.update');
+	Route::put( 'product_category_images/{product_category}/destroy', 'ProductCategoryImagesController@destroy')->name('product_category_images.destroy');
+	Route::put( 'product_category_images/{product_category}/update_display_order','ProductCategoryImagesController@update_display_order')->name('product_category_images.update_display_order');
+
 	// Product Option Images
 	Route::get( 'product_option_images/{product_option}/index_list','ProductOptionImagesController@index_list')->name('product_option_images.index_list');
 	Route::get( 'product_option_images/{product_option}/index_grid','ProductOptionImagesController@index_grid')->name('product_option_images.index_grid');

@@ -2,7 +2,7 @@
 @section('title', 'product_categories')
 
 @section('content_header')
-   {{ Breadcrumbs::render('product_categories.index') }}
+	{{ Breadcrumbs::render('product_categories.index') }}
 @stop
 
 @section('content')
@@ -39,6 +39,9 @@
 					{{-- <a href="{{ route('product_categories.show', ['product_category' => $product_category->id]) }}" title="View Product Category Details"><i class="fa fa-info-circle fa-2x"></i></a>&nbsp;&nbsp; --}}
 					@can('edit_product_categories')
 					<a href="{{ route('product_categories.edit', ['product_category' => $product_category->id]) }}" title="Edit Product Category Details"><i class="fa fa-pencil-square fa-2x"></i></a>&nbsp;&nbsp;
+					@endcan
+					@can('edit_product_category_images')
+					<a href="{{ route('product_category_images.index_list', ['product_category' => $product_category->id]) }}" title="Edit Product Category Images"><i class="fa fa-file-image-o fa-2x"></i></a>&nbsp;&nbsp;
 					@endcan
 				{{-- <a href="{{ route('product_categories.destroy', ['product_category' => $product_category->id]) }}" title="Remove Product Category"><i class="fa fa-trash fa-2x"></i></a> --}}
 				</td>
