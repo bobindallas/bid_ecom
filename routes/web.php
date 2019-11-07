@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
 	Route::resource('product_categories','ProductCategoriesController');
 	Route::resource('products','ProductsController');
 	Route::resource('product_attributes','ProductAttributesController');
+	Route::resource('store_details','StoreDetailsController');
 
 	// custom routes
 	Route::get('products/{product}/create_attribute', 'ProductAttributesController@create')->name('products.create_attribute');

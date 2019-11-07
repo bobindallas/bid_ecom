@@ -55,7 +55,7 @@
 	  <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
 		<span class="navbar-toggler-icon"></span>
 	  </button>
-	  <a class="navbar-brand" href="#">
+	  <a class="navbar-brand" href="{{ route('dashboard') }}">
 		<img class="navbar-brand-full" src="{{ asset('img/brand/logo.svg') }}" width="89" height="25" alt="CoreUI Logo">
 		<img class="navbar-brand-minimized" src="{{ asset('img/brand/sygnet.svg') }}" width="30" height="30" alt="CoreUI Logo">
 	  </a>
@@ -65,7 +65,7 @@
 {{--
 	  <ul class="nav navbar-nav d-md-down-none">
 		<li class="nav-item px-3">
-		  <a class="nav-link" href="#">Dashboard</a>
+		  <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
 		</li>
 		<li class="nav-item px-3">
 		  <a class="nav-link" href="#">Users</a>
@@ -167,7 +167,7 @@
 		<nav class="sidebar-nav">
 		  <ul class="nav">
 			<li class="nav-item">
-			  <a class="nav-link" href="index.html">
+			  <a class="nav-link" href="{{ route('dashboard') }}">
 				<i class="nav-icon icon-speedometer"></i> Dashboard
 			  </a>
 			</li>
@@ -346,12 +346,13 @@
 			<li class="nav-title">Extras</li>
 			<li class="nav-item nav-dropdown">
 			  <a class="nav-link nav-dropdown-toggle" href="#">
-				<i class="nav-icon icon-star"></i> Pages</a>
+				<i class="nav-icon icon-star"></i> Utilities</a>
 			  <ul class="nav-dropdown-items">
 				<li class="nav-item">
-				  <a class="nav-link" href="login.html" target="_top">
-					<i class="nav-icon icon-star"></i> Login</a>
+				  <a class="nav-link" href="{{ route('store_details.index') }}" target="_top">
+					<i class="nav-icon icon-star"></i> Store Details</a>
 				</li>
+{{--
 				<li class="nav-item">
 				  <a class="nav-link" href="register.html" target="_top">
 					<i class="nav-icon icon-star"></i> Register</a>
@@ -364,6 +365,7 @@
 				  <a class="nav-link" href="500.html" target="_top">
 					<i class="nav-icon icon-star"></i> Error 500</a>
 				</li>
+--}}
 			  </ul>
 			</li>
 		  </ul>

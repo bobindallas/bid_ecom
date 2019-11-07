@@ -34,7 +34,7 @@
 			<ul id="sortable">
 				@foreach($product_category->media as $image)
 					<li class="ui-state-default" id="itm_{{ $image->id }}">
-						 <img class="img-list" src="{{ $image->getUrl('thumb') }}" style="border:solid #ccc 1px;">
+						 <img class="img-list" src="{{ $image->getUrl('thumb') }}" style="border:solid #ccc 1px;cursor:pointer;" title="drag to re-order">
 					</li>
 				@endforeach
 			</ul>
