@@ -74,6 +74,7 @@
 		<script>
 		$('#product_category_images').DataTable({
 			"paging": true,
+			"order": [[ 1, "asc" ]],
 			"lengthChange": false,
 			"searching": true,
 			"ordering": true,

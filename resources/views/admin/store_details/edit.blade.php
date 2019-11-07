@@ -1,14 +1,14 @@
 @extends(config('view.ADMIN_LAYOUT'))
 
 @section('content_header')
-	{{ Breadcrumbs::render('store_details.create') }}
+	{{ Breadcrumbs::render('store_details.edit', $store_details) }}
 @stop
 
 @section('content')
 	<div class="container">
 		<div id="plist">
 		<div class="card">
-			<div class="card-header">Add New Store</div>
+			<div class="card-header">Edit Store Details</div>
 			<div class="card-body">
 				<form method='POST' action="{{ route('store_details.update', $store_details) }}" name="F1" id="F1">
 					@csrf

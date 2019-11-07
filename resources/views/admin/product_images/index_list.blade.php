@@ -19,21 +19,21 @@
 <a href="{{ route('product_images.index_list', $product->id ) }}" title="List View"><i class="fa fa-bars fa-2x"></i></a>
 		<div class="card-body">
 		@if (count($product->media))
-		  <table id="product_images" class="table table-hover table-responsive-sm table-sm">
+			<table id="product_images" class="table table-hover table-responsive-sm table-sm">
 			<thead>
 			<tr>
-			  <th>ID</th>
-			  <th>Display Order</th>
-			  <th>Name</th>
-			  <th>Title</th>
-			  <th>Alt Text</th>
-			  <th>Active</th>
-			  <th>Actions</th>
+				<th>ID</th>
+				<th>Display Order</th>
+				<th>Name</th>
+				<th>Title</th>
+				<th>Alt Text</th>
+				<th>Active</th>
+				<th>Actions</th>
 			</tr>
 			</thead>
 			<tbody>
 					@foreach($product->media as $image)
-	 			   <tr>
+	 				 <tr>
 	 				 <td>{{ $image->id }}</td>
 	 				 <td>{{ $image->order_column }}</td>
 	 				 <td>{{ $image->name }}</td>
@@ -44,24 +44,24 @@
 						{{-- <a href="{{ route('products.show', ['id' => $image->id]) }}" title="View Product Image"><i class="fa fa-info-circle fa-2x"></i></a>&nbsp;&nbsp; --}}
 						<a href="{{ route('product_images.edit', ['product' => $product->id, 'media_id' => $image->id]) }}" title="Edit Product Image"><i class="fa fa-pencil-square fa-2x"></i></a>
 					</td>
-	 			   </tr>
+	 				 </tr>
 					@endforeach
 				</tbody>	
 			<tfoot>
 			<tr>
-			  <th>ID</th>
-			  <th>Display Order</th>
-			  <th>Name</th>
-			  <th>Title</th>
-			  <th>Alt Text</th>
-			  <th>Active</th>
-			  <th>Actions</th>
+				<th>ID</th>
+				<th>Display Order</th>
+				<th>Name</th>
+				<th>Title</th>
+				<th>Alt Text</th>
+				<th>Active</th>
+				<th>Actions</th>
 			</tr>
 			</tfoot>
-		  </table>
-      @else
-         <center>No Records Found...</center>
-      @endif
+			</table>
+		@else
+		 <center>No Records Found...</center>
+		@endif
 		</div>
 </div>
 </div>
@@ -75,12 +75,13 @@
 	@section('js')
 		<script>
 		$('#product_images').DataTable({
-		  "paging": true,
-		  "lengthChange": false,
-		  "searching": true,
-		  "ordering": true,
-		  "info": true,
-		  "autoWidth": false
+			"order": [[ 1, "asc" ]],
+			"paging": true,
+			"lengthChange": false,
+			"searching": true,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false
 		});
 		</script>
 	@stop

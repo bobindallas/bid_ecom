@@ -11,9 +11,11 @@
 		<div class="card">
 		<div class="card-body" style="background-color:white;">
 	@can('create_product_options')
+{{--
 		<a href="#" title="Grid View"><i class="fa fa-th fa-2x" style="color: #ccc;"></i></a>
 		<span style="padding-left:10px;"></span>
 		<a href="#" title="List View"><i class="fa fa-bars fa-2x"></i></a>
+--}}
 		<div style="float:right;padding-right:20px;"><a href="{{ route('product_options.create', $product->id) }}" title="Add new product option"><i class="fa fa-plus-circle fa-2x"></i></a></div><br /><br />
 	@endcan
 			@if (count($product->product_option))

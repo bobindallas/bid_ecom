@@ -21,7 +21,8 @@
 <span style="padding-left:10px;"></span>
 <a href="{{ route('product_category_images.index_list', $product_category->id ) }}" title="List View"><i class="fa fa-bars fa-2x" style="color: #ccc;"></i></a>
 		<div class="card-body">
-		@if(count($product_category->media))
+		{{-- @if(count($product_category->media)) --}}
+		@if(count($media))
 			<div id="ud_link" style="visibility:hidden;">
 				<form action="{{ route('product_category_images.update_display_order', $product_category->id) }}" name="F1" id="F1" method="POST">
 					@csrf
@@ -32,9 +33,10 @@
 				</form>
 			</div>
 			<ul id="sortable">
-				@foreach($product_category->media as $image)
+				{{-- @foreach($product_category->media as $image) --}}
+				@foreach($media as $image)
 					<li class="ui-state-default" id="itm_{{ $image->id }}">
-						 <img class="img-list" src="{{ $image->getUrl('thumb') }}" style="border:solid #ccc 1px;cursor:pointer;" title="drag to re-order">
+						 <img class="img-list" src="{{ $image->getUrl('thumb') }}" style="border:solid #ccc 1px;cursor:pointer;" title="{{ $image->name }} : drag to re-order">
 					</li>
 				@endforeach
 			</ul>

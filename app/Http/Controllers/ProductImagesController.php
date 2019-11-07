@@ -35,9 +35,10 @@ class ProductImagesController extends Controller {
 	 */
 	public function index_grid(int $product_id) {
 
-		if (! $product = Product::with('media')->find($product_id)) { return abort(404); };
+		$product = Product::with('media')->findOrFail($product_id);
+      $media = $product->media->sortBy('order_column'); // sort by our set order (just one of a few bugs in this lib)
 
-		return view('admin.product_images.index_grid', compact('product'));
+		return view('admin.product_images.index_grid', compact('product', 'media'));
 	
 	} // image_grid
 
@@ -159,7 +160,7 @@ class ProductImagesController extends Controller {
 
 		Media::setNewOrder($fu);
 
-		return redirect()->route('product_images.index_list', $product->id)->with('success', 'Product Image Display Order Updated');	
+		return redirect()->route('product_images.index_grid', $product->id)->with('success', 'Product Image Display Order Updated');	
 	
 	} // update_image_display_order
 

@@ -20,7 +20,7 @@ class ProductOptionImagesController extends Controller {
 	 */
 	public function index_list(int $product_option_id) {
 
-		if (! $product_option = ProductOption::with(['media', 'product'])->find($product_option_id)) { return abort(404); };
+		$product_option = ProductOption::with(['media', 'product'])->findOrFail($product_option_id);
 		
 		return view('admin.product_option_images.index_list', compact('product_option')); 
 
@@ -33,9 +33,11 @@ class ProductOptionImagesController extends Controller {
 	 */
 	public function index_grid(int $product_option_id) {
 
-		if (! $product_option = ProductOption::with(['product', 'media'])->find($product_option_id)) { return abort(404); };
+		$product_option = ProductOption::with(['product', 'media'])->findOrFail($product_option_id);
+	   // we have to split this out to get the sort right
+	   $media = $product_option->media->sortBy('order_column'); // sort by our set order (just one of a few bugs in this lib)
 
-		return view('admin.product_option_images.index_grid', compact('product_option'));
+		return view('admin.product_option_images.index_grid', compact('product_option', 'media'));
 	
 	} // image_grid
 
@@ -97,7 +99,7 @@ class ProductOptionImagesController extends Controller {
 					return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
 				})
 				->withCustomProperties([
-					'title'   => $request->get('title'),
+					'title'	=> $request->get('title'),
 					'alt_tag' => $request->get('alt_tag'),
 					'caption' => $request->get('caption'),
 					'active'  => $request->get('active', 0)

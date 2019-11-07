@@ -34,8 +34,12 @@ class ProductCategoryImagesController extends Controller {
 	public function index_grid(int $product_category_id) {
 
 		$product_category = ProductCategory::with(['media'])->findOrFail($product_category_id);
+
+		// we have to split this out to get the sort right
+		$media = $product_category->media->sortBy('order_column'); // sort by our set order (just one of a few bugs in this lib)
+
 		session(['product_category_image_view' => 'grid']); // for redirect after operation
-		return view('admin.product_category_images.index_grid', compact('product_category'));
+		return view('admin.product_category_images.index_grid', compact('product_category', 'media'));
 	
 	} // image_grid
 
