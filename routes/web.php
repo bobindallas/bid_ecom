@@ -14,6 +14,12 @@
 Route::get('/', 'SiteController@index')->name('home');
 Route::resource('site','SiteController');
 
+// Auth::routes(['register' => false]); // hide register link
+Auth::routes();
+
+Route::prefix('customer')->group(function () {
+});
+
 Route::prefix('admin')->group(function () {
 
 	// standard resource routes
@@ -88,5 +94,3 @@ Route::prefix('admin')->group(function () {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-// Auth::routes(['register' => false]); // hide register link
-Auth::routes();
