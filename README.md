@@ -33,6 +33,14 @@ We're using:
 #### TODO
 
 * Factorys to gin some sample products
+* Feature / Unit tests - started this but focused on infrastructure at the moment - I'll backfill tests when we have a rough framework in place
+
+#### Missing / Pipeline
+
+* Payment gateway - I've written to Auth.net many times - need to break that to a module and add stripe, paypal, etc
+* Shipping calculation / interface - have a client that tracks shipping charges very closely as opposed to the general "free shipping" attitude of most sites
+* Taxes - some interface to taxing authorities - was much nicer when the Internet was tax-free
+* Internationalization - english only at this point but we want to add language packs once the product gets a little more mature
 
 #### License:
 
