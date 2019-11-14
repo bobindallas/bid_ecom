@@ -10,7 +10,7 @@ We're using:
 * Spatie Media Library => https://github.com/spatie/laravel-medialibrary
 * Laravel Breadcrumbs => https://github.com/davejamesmiller/laravel-breadcrumbs
 * Coreui => https://coreui.io/ for the admin interface
-* Not included here but recommended for development is [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) or [larave-telescope](https://github.com/laravel/telescope)
+* Not included here but recommended for development is [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) or [laravel-telescope](https://github.com/laravel/telescope)
 
 #### Install Instructions:
 
