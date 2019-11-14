@@ -24,6 +24,7 @@ class CreateProductCategoriesTable extends Migration
 
 				$table->unique('slug');
 				$table->index('display_order');
+				$table->index('active');
 		  });
 	 }
 

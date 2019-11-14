@@ -2,15 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Product;
+use App\Model\ProductCategory;
 use Illuminate\Http\Request;
+use View;
 
 class SiteController extends Controller {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() {
-	      return view('site.index');
-    }
-}
+
+	public function __construct() {
+	
+		$this->menu_product_categories = ProductCategory::where('active', 1)->orderBy('display_order', 'asc')->get();
+		View::share('menu_product_categories', $this->menu_product_categories);
+	}
+
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index() {
+
+		$products           = Product::where('active', 1)->with(['product_option','product_option.product_option_item', 'product_attribute', 'media'])->get();
+		$product_categories = ProductCategory::where('active', 1)->with(['media'])->orderBy('display_order', 'asc')->get();
+
+		return view('site.index', compact('products', 'product_categories'));
+
+	}
+
+	public function category(string $slug) {
+
+		if (! $product_category = ProductCategory::where('slug', $slug)->with(['category_has_product.product.media'])->first()) { return abort(404); };
+
+		return view('site.category', compact('product_category'));
+	
+	}
+
+	public function product(string $category_slug, $product_slug) {
+
+		if (! $product_category = ProductCategory::where('slug', $category_slug)->first()) { return abort(404); }
+		if (! $product          = Product::where('slug', $product_slug)->with(['media'])->first()) { return abort(404); }
+
+		dd($product_category, $product);
+
+		return view('site.product', compact('product_category', 'product'));
+
+	}
+
+} // class

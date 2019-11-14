@@ -35,7 +35,7 @@
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>
-						<textarea name="description" value="" class='form-control' placeholder=''>{{ $product_option->description }}</textarea>
+						<textarea name="description" value="" class='form-control' placeholder=''>{!! $product_option->description !!}</textarea>
 					</div>
                   <div class="form-group">
                      <label for="display_order">Display Order *</label>

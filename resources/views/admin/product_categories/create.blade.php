@@ -30,7 +30,7 @@
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>
-						<textarea name="description" value="" class='form-control' placeholder=''></textarea>
+						<textarea name="description" value="" class='form-control' placeholder=''>{!! old('description') !!}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="cost">Display Order</label>
@@ -57,7 +57,6 @@
 			fdata : {
 				slug            : "{{ old('slug') }}",
 				name            : "{{ old('name') }}",
-				// description     : "{{ old('description') }}",
 				display_order   : "{{ old('display_order') }}",
 				active          : 1,
 				disabled        : true,

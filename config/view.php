@@ -34,6 +34,8 @@ return [
     ),
 
 	 'ADMIN_LAYOUT' => 'layouts.admin.app',
-	 'SITE_LAYOUT'  => 'layouts.app',
+	 // 'SITE_LAYOUT'  => 'layouts.frontend.app',
+	 // 'SITE_LAYOUT'  => 'layouts.store.app',
+	 'SITE_LAYOUT'  => 'layouts.front.app',
 
 ];

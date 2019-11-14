@@ -21,8 +21,10 @@ class CreateProductAttributesTable extends Migration
 			$table->unsignedTinyInteger('display_order')->default(1);
 			$table->unsignedTinyInteger('active')->default(1);
 			$table->timestamps();
+
 			$table->index('product_id');
 			$table->index('display_order');
+			$table->index('active');
 		});
 	 }
 

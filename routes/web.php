@@ -11,8 +11,20 @@
 |
 */
 
-Route::get('/', 'SiteController@index')->name('home');
-Route::resource('site','SiteController');
+// Frontend routes
+Route::get('/', 'SiteController@index')->name('site.home');
+// Route::get('features', 'SiteController@features')->name('product_features');
+// Route::get('tags', 'SiteController@tags')->name('product_tags');
+Route::get('category/{category_slug}','SiteController@category')->name('site.product_category');
+Route::get('category/{category_slug}/product/{product_slug}','SiteController@product')->name('site.product');
+// Route::get('product/{product_slug}','SiteController@product')->name('single_product');
+// Route::put('cart', 'ShoppingCartController@add_to_cart')->name('add_to_cart');
+// Route::get('cart', 'ShoppingCartController@index')->name('view_cart');
+// Route::get('cart/{item_id}', 'ShoppingCartController@remove_item')->name('remove_cart_item');
+// Route::get('empty_cart', 'ShoppingCartController@empty_cart')->name('empty_cart');
+// Route::get('checkout', 'ShoppingCartController@checkout')->name('checkout');
+// Route::put('process_order', 'ShoppingCartController@process_order')->name('process_order');
+// Route::resource('site','SiteController');
 
 // Auth::routes(['register' => false]); // hide register link
 Auth::routes();

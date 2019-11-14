@@ -30,7 +30,7 @@
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>
-						<textarea name="description" value="" class='form-control' placeholder=''>{{ $product_category->description }}</textarea>
+						<textarea name="description" value="" class='form-control' placeholder=''>{!! $product_category->description !!}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="cost">Display Order</label>
@@ -57,7 +57,6 @@
 			fdata : {
 				slug            : "{{ $product_category->slug }}",
 				name            : "{{ $product_category->name }}",
-				// description     : "{{ $product_category->description }}",
 				display_order   : "{{ $product_category->display_order }}",
 				active          : {{ $product_category->active }},
 				disabled        : true,

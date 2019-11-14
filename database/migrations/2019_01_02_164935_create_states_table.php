@@ -21,6 +21,8 @@ class CreateStatesTable extends Migration
 			$table->string('description','254')->nullable();
 			$table->unsignedTinyInteger('active')->default(1);
 			$table->timestamps();
+
+			$table->index('active');
 		});
 	}
 

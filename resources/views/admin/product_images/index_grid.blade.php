@@ -16,13 +16,13 @@
 <div class="card">
 <div class="card-body">
 <div style="float:right;padding-right:20px;">
-<a href="{{ route('product_images.create', $product->id ) }}" title="Add New Product Image"><i class="fa fa-plus-circle fa-2x"></i></a>
+<a href="{{ route('product_images.create', $product->id) }}" title="Add New Product Image"><i class="fa fa-plus-circle fa-2x"></i></a>
 </div>
-<a href="{{ route('product_images.index_grid', $product->id ) }}" title="Grid View"><i class="fa fa-th fa-2x"></i></a>
+<a href="{{ route('product_images.index_grid', $product->id) }}" title="Grid View"><i class="fa fa-th fa-2x"></i></a>
 <span style="padding-left:10px;"></span>
-<a href="{{ route('product_images.index_list', $product->id ) }}" title="List View"><i class="fa fa-bars fa-2x" style="color: #ccc;"></i></a>
+<a href="{{ route('product_images.index_list', $product->id) }}" title="List View"><i class="fa fa-bars fa-2x" style="color: #ccc;"></i></a>
 		<div class="card-body">
-		@if(count($media))
+		@if(count($product->media))
 			<div id="ud_link" style="visibility:hidden;">
 				<form action="{{ route('product_images.update_display_order', $product->id) }}" name="F1" id="F1" method="POST">
 					@csrf
@@ -33,10 +33,9 @@
 				</form>
 			</div>
 			<ul id="sortable">
-				@foreach($media as $image)
+				@foreach($product->media->sortBy('order_column') as $image)
 					<li class="ui-state-default" id="itm_{{ $image->id }}">
 						 <img class="img-list" src="{{ $image->getUrl('thumb') }}" style="border:solid #ccc 1px;">
-						{{-- <img class="img-list" src="duct_media/{{$image->product->id}}/images/th/{{ $image->name }}" width="200" height="200"> --}}
 					</li>
 				@endforeach
 			</ul>

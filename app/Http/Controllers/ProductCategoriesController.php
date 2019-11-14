@@ -86,6 +86,8 @@ class ProductCategoriesController extends Controller {
      */
     public function edit(ProductCategory $product_category) {
 
+	// 	dd($product_category);
+
 		$this->check_permission('edit_product_categories');
 		return view('admin.product_categories.edit', compact('product_category'));
 

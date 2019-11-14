@@ -36,9 +36,8 @@ class ProductImagesController extends Controller {
 	public function index_grid(int $product_id) {
 
 		$product = Product::with('media')->findOrFail($product_id);
-      $media = $product->media->sortBy('order_column'); // sort by our set order (just one of a few bugs in this lib)
 
-		return view('admin.product_images.index_grid', compact('product', 'media'));
+		return view('admin.product_images.index_grid', compact('product'));
 	
 	} // image_grid
 
@@ -76,10 +75,7 @@ class ProductImagesController extends Controller {
 		// https://github.com/spatie/laravel-medialibrary/issues/1228
 		if (! $image = $product_media->where('id', $media_id)->first()) { return abort(404); }
 
-		return view('admin.product_images.edit', compact(
-			'product',
-			'image'
-		));
+		return view('admin.product_images.edit', compact('product', 'image'));
 	
 	} // edit_image
 
