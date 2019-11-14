@@ -42,4 +42,10 @@ class Product extends Model implements HasMedia {
 		$this->addMediaConversion('thumb')->width(200)->height(200)->sharpen(10);
 	
 	}
+
+	public function getPriceAttribute() {
+
+		return sprintf("%0.2f",round($this->cost * $this->cost_multiplier, 2));
+	
+	}
 }

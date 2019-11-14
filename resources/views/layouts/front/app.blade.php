@@ -1,28 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="favicon.ico">
-	<title>{{ config('app.name') }}</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="favicon.ico">
+		<title>{{ config('app.name', 'My App') }}</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	<script src="{{ asset('js/app.js') }}"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	{{--<script src="https://cdn.jsdelivr.net/npm/vue"></script> --}}
-	@stack('css')
-	@yield('css')
-  </head>
+		<!-- Bootstrap core CSS -->
+		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+		<script src="{{ asset('js/app.js') }}"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		{{--<script src="https://cdn.jsdelivr.net/npm/vue"></script> --}}
+		{{-- child tpl css - push here --}}
+		@stack('css')
+		@yield('css')
+		{{-- child tpl header js - push here --}}
+		@stack('js_header')
+		@yield('js_header')
+	</head>
 
-  <body>
-
-	 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<body>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 	   <a class="navbar-brand" href="/">Home</a>
 	   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 	     <span class="navbar-toggler-icon"></span>
@@ -118,6 +121,7 @@
 	   </div>
 
 	 </main><!-- /.container -->
+{{-- child tpl js - push here --}}
 @stack('js')
 @yield('js')
   </body>

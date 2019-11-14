@@ -32,7 +32,7 @@ class SiteController extends Controller {
 
 	public function category(string $slug) {
 
-		if (! $product_category = ProductCategory::where('slug', $slug)->with(['category_has_product.product.media'])->first()) { return abort(404); };
+		$product_category = ProductCategory::where('slug', $slug)->with(['category_has_product.product.media'])->firstOrFail();
 
 		return view('site.category', compact('product_category'));
 	
@@ -40,10 +40,11 @@ class SiteController extends Controller {
 
 	public function product(string $category_slug, $product_slug) {
 
-		if (! $product_category = ProductCategory::where('slug', $category_slug)->first()) { return abort(404); }
-		if (! $product          = Product::where('slug', $product_slug)->with(['media'])->first()) { return abort(404); }
+		$product_category = ProductCategory::where('slug', $category_slug)->firstOrFail();
+		$product          = Product::where('slug', $product_slug)->with(['product_option.product_option_item', 'product_attribute', 'media'])->firstOrFail();
 
-		dd($product_category, $product);
+		// dd($product);
+		// dd($product_category, $product);
 
 		return view('site.product', compact('product_category', 'product'));
 
