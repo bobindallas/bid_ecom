@@ -19,27 +19,27 @@ We're using:
 3) create your database (mysql)
 4) copy .env.example to .env
 5) php artisan key:generate - set the application key
-5) php artisan storage:link - not needed here but recommended for standard Laravel install
-6) edit .env to set your db name and credentials
-7) php artisan:migrate (or migrate:[re]fresh to clear tables) - run migrations to create tables
-8) optionally edit databases/seeds/UsersTableSeeder.php to add / change the default users prior to seeding.  Leave the default Roles and Permissions as you can edit them later.
-9) php artisan db:seed - this will give you the option to run migrate:refresh
+6) php artisan storage:link - not needed here but recommended for standard Laravel install
+7) edit .env to set your db name and credentials
+8) php artisan:migrate (or migrate:[re]fresh to clear tables) - run migrations to create tables
+9) optionally edit databases/seeds/UsersTableSeeder.php to add / change the default users prior to seeding.  Leave the default Roles and Permissions as you can edit them later.
+10) php artisan db:seed - this will give you the option to run migrate:refresh
 
-#### Laravel 6 removed the authentication frontend so we have to install it separately (if you want it):
+### Laravel 6 removed the authentication frontend so we have to install it separately (if you want it):
 
 * composer require laravel/ui --dev
 
-#### Generate basic scaffolding (take your pick)...
+### Generate basic scaffolding (take your pick)...
 * php artisan ui bootstrap
 * php artisan ui vue
 * php artisan ui react
 
-#### Generate login / registration scaffolding (take your pick)...
+### Generate login / registration scaffolding (take your pick)...
 * php artisan ui bootstrap --auth
 * php artisan ui vue --auth
 * php artisan ui react --auth
 
-10) login using default Superuser account =>  login: super@email.com password: secret
+11) login using default Superuser account =>  login: super@email.com password: secret
 
 #### Notes:
 * Superuser role ignores permissions - Check app/Providers/AuthServiceProvider.php
