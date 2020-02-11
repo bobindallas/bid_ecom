@@ -21,20 +21,21 @@ We're using:
 5) php artisan key:generate - set the application key
 6) php artisan storage:link - not needed here but recommended for standard Laravel install
 7) edit .env to set your db name and credentials
-8) php artisan:migrate (or migrate:[re]fresh to clear tables) - run migrations to create tables
+8) php artisan migrate (or migrate:[re]fresh to clear tables) - run migrations to create tables
 9) optionally edit databases/seeds/UsersTableSeeder.php to add / change the default users prior to seeding.  Leave the default Roles and Permissions as you can edit them later.
 10) php artisan db:seed - this will give you the option to run migrate:refresh
 
-### Laravel 6 removed the authentication frontend so we have to install it separately (if you want it):
+#### Laravel 6 removed the authentication frontend so we have to install it separately (if you want it):
 
 * composer require laravel/ui --dev
+* npm install && npm run dev (pull in css / js requirements)
 
-### Generate basic scaffolding (take your pick)...
+#### Generate basic scaffolding (take your pick)...
 * php artisan ui bootstrap
 * php artisan ui vue
 * php artisan ui react
 
-### Generate login / registration scaffolding (take your pick)...
+#### Generate login / registration scaffolding (take your pick)...
 * php artisan ui bootstrap --auth
 * php artisan ui vue --auth
 * php artisan ui react --auth
@@ -60,3 +61,4 @@ We're using:
 #### License:
 
 [MIT license](http://opensource.org/licenses/MIT)
+
