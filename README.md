@@ -30,12 +30,8 @@ We're using:
 * composer require laravel/ui --dev
 * npm install && npm run dev (pull in css / js requirements)
 
-#### Generate basic scaffolding (take your pick)...
-* php artisan ui bootstrap
-* php artisan ui vue
-* php artisan ui react
+#### Generate basic login / registration scaffolding (take your pick)...
 
-#### Generate login / registration scaffolding (take your pick)...
 * php artisan ui bootstrap --auth
 * php artisan ui vue --auth
 * php artisan ui react --auth
