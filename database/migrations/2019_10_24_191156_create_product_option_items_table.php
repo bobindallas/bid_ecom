@@ -19,6 +19,8 @@ class CreateProductOptionItemsTable extends Migration
             $table->string('slug', 254)->default('');
             $table->string('name', 254)->default('');
             $table->string('value', 254)->default('');
+            $table->enum('price_type', ['F','L','P','W','H','G']);
+				$table->decimal('price_value', 10, 2)->default(0);
             $table->text('description')->nullable();
             $table->unsignedInteger('display_order')->default(1);
             $table->unsignedTinyInteger('active')->default(1);

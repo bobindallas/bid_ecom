@@ -22,11 +22,13 @@
 					<a href="{{ route('site.product', [$product_category->slug, $category_product->product->slug]) }}">
 						<h4 class="card-title text-center">{{ $category_product->product->name }}</h4>
 					</a>
-<div id="card-img">
+					<div id="card-img">
+					@if($category_product->product->media->count())
 					<a href="{{ route('site.product', [$product_category->slug, $category_product->product->slug]) }}">
 						<img class="card-img-top" src="{{ $category_product->product->media->sortBy('order_column')[0]->getUrl('small') }}" alt="{{ $category_product->product->media->sortBy('order_column')[0]->getCustomProperty('alt_tag') }}">
 					</a>
-</div>
+					@endif
+					</div>
 					<p class="card-text">{!! $category_product->product->description !!}</p>
 					<a href="{{ route('site.product', [$product_category->slug, $category_product->product->slug]) }}" class="mt-auto btn btn-lg btn-block btn-primary">Shop Now</a>
 				 </div>

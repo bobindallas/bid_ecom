@@ -45,7 +45,7 @@ class ProductOptionItemsController extends Controller {
 	public function store(Request $request) {
 
 		 // FIXME add val & auth
-		dd($request);
+		// dd($request);
 
 		 $product_option_item = new ProductOptionItem();
 
