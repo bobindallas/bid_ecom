@@ -76,7 +76,7 @@ var plist = new Vue({
 			alt_tag       : '{{ old('alt_tag') }}',
 			caption       : '{{ old('caption') }}',
 			display_order : 1,
-			active        : '{{ old('active') }}',
+			active        : 1,
 			disabled      : true,
 		},
 

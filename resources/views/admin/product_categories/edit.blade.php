@@ -20,13 +20,13 @@
 							</ul>
 					</div>
 					<div class="form-group">
-						<label for="slug">Slug</label>
-						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" placeholder='Slug' readonly>
-						<input type="hidden" value="" name="slug" id="slug" v-model="fdata.slug">
-					</div>
-					<div class="form-group">
 						<label for="name">Name *</label>
 						<input type="text" name="name" value="" class='form-control' v-model="fdata.name" v-on:keyup="check_form" placeholder='Product Category Name'>
+					</div>
+					<div class="form-group">
+						<label for="slug">Slug</label>
+						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" placeholder='Slug' tabindex="-1" readonly>
+						<input type="hidden" value="" name="slug" id="slug" v-model="fdata.slug">
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>

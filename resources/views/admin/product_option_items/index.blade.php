@@ -21,8 +21,9 @@
 				<tr>
 					<th>ID</th>
 					<th>Display Order</th>
-					<th>Slug</th>
 					<th>Name</th>
+					<th>Price Type</th>
+					<th>Price</th>
 					<th>Active</th>
 					<th>Actions</th>
 				</tr>
@@ -32,8 +33,9 @@
 				<tr>
 					<td>{{ $option_item->id }}</td>
 					<td>{{ $option_item->display_order }}</td>
-					<td>{{ $option_item->slug }}</td>
 					<td>{{ $option_item->name }}</td>
+					<td>{{ $price_types[$option_item->price_type] }}</td>
+					<td>{{ $option_item->price_value }}</td>
 					<td>@if($option_item->active ) <i class="fa fa-check-square-o fa-lg" style="color:green;"></i> @else <i class="fa fa-square-o fa-lg" style="color:red;"></i> @endif</td>
 					<td>
 					@can('edit_product_option_items')

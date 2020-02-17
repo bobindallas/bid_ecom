@@ -20,20 +20,20 @@
 							</ul>
 					</div>
 					<div class="form-group">
-						<label for="slug">Slug</label>
-						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" placeholder='Slug' readonly>
-						<input type="hidden" name="slug" id="slug" v-model="fdata.slug">
-					</div>
-					<div class="form-group">
 						<label for="name">Name *</label>
 						<input type="text" name="name" value="" class='form-control' v-model="fdata.name" v-on:keyup="check_form" placeholder='Product Category Name'>
+					</div>
+					<div class="form-group">
+						<label for="slug">Slug</label>
+						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" placeholder='Slug' tabindex="-1" readonly>
+						<input type="hidden" name="slug" id="slug" v-model="fdata.slug">
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label>
 						<textarea name="description" value="" class='form-control' placeholder=''>{!! old('description') !!}</textarea>
 					</div>
 					<div class="form-group">
-						<label for="cost">Display Order</label>
+						<label for="display_order">Display Order</label>
 						<input type="text" name="display_order" value="" class='form-control' v-model="fdata.display_order" v-on:keyup="check_form" placeholder='Display Order'>
 					</div>
 					<div class="form-group">
@@ -57,7 +57,7 @@
 			fdata : {
 				slug            : "{{ old('slug') }}",
 				name            : "{{ old('name') }}",
-				display_order   : "{{ old('display_order') }}",
+				display_order   : "{{ old('price_type') }}",
 				active          : 1,
 				disabled        : true,
 			},

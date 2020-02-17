@@ -260,10 +260,10 @@ class ProductsController extends Controller {
 
 		} else {
 
-			$image->setCustomProperty('title', $request->get('title'));
+			$image->setCustomProperty('title',   $request->get('title'));
 			$image->setCustomProperty('alt_tag', $request->get('alt_tag'));
 			$image->setCustomProperty('caption', $request->get('caption'));
-			$image->setCustomProperty('active', $request->get('active') || 0);
+			$image->setCustomProperty('active',  $request->get('active') || 0);
 			$image->save();
 
 			$flash_msg = 'Product Image Updated';

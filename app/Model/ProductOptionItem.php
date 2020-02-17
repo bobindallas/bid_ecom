@@ -15,6 +15,21 @@ class ProductOptionItem extends Model implements HasMedia {
 		return $this->belongsTo('App\Model\ProductOption')->orderBy('display_order', 'asc');
 	} 
 
+	// handle sketchy display_order flags (null/0/1)
+	public function setDisplayOrderAttribute($value) {
+		$this->attributes['display_order'] = (! is_null($value) && isset($value)) ? $value : 1;  
+	}
+
+	// handle sketchy price_value
+	public function setPriceValueAttribute($value) {
+		$this->attributes['price_value'] = (! is_null($value) && isset($value)) ? $value : 0;  
+	}
+
+	// handle sketchy active flags (null/0/1)
+	public function setActiveAttribute($value) {
+		$this->attributes['active'] = (! is_null($value) && isset($value)) ? $value : 0;  
+	}
+
 	public function media() {
 	
 		return $this->morphMany(Media::class, 'model');

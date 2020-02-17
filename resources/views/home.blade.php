@@ -1,4 +1,4 @@
-@extends(env('admin_layout'))
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -14,8 +14,7 @@
                         </div>
                     @endif
 
-						  You are logged in!<br /><br />
-						  Use the Options menu to edit <a href="{{ route('users.index') }}">Users</a> / <a href="{{ route('roles.index') }}">Roles</a> / <a href="{{ route('permissions.index') }}">Permissions</a>.
+                    You are logged in!
                 </div>
             </div>
         </div>

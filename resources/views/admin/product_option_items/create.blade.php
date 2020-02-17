@@ -20,28 +20,43 @@
 							</ul>
 					</div>
 					<div class="form-group">
-						<label for="slug">Slug</label>
-						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" placeholder='Slug' readonly>
-						<input type="hidden" name="slug" id="slug" v-model="fdata.slug">
-					</div>
-					<div class="form-group">
 						<label for="name">Name *</label>
 						<input type="text" name="name" value="" class='form-control' v-model="fdata.name" v-on:keyup="check_form" placeholder='Product Option Item Name'>
+					</div>
+					<div class="form-group">
+						<label for="slug">Slug</label>
+						<input type="text" name="slug_dsp" value="" class='form-control' v-model="fdata.slug" placeholder='Slug' tabindex="-1" readonly>
+						<input type="hidden" name="slug" id="slug" v-model="fdata.slug">
 					</div>
 					<div class="form-group">
 						<label for="value">Value *</label>
 						<input type="text" name="value" value="" class='form-control' v-model="fdata.value" v-on:keyup="check_form" placeholder='Product Option Item Value'>
 					</div>
 					<div class="form-group">
+						<label for="price_type">Option Item Price Type</label>
+						<select id="price_type" name="price_type" class="form-control">
+							<option value="F">Free</option>
+							<option value="L">Flat Rate</option>
+							<option value="P">Percent of Product Price</option>
+							<option value="W">Priced by Width</option>
+							<option value="H">Free</option>
+							<option value="G">Free</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="price_value">Price</label>
+						<input type="text" name="price_value" value="" class='form-control' v-model="fdata.price_value" v-on:keyup="check_form" placeholder='Product Option Item Price'>
+					</div>
+					<div class="form-group">
 						<label for="description">Description</label>
 						<textarea name="description" value="" class='form-control' placeholder=''></textarea>
 					</div>
 					<div class="form-group">
-                     <label for="display_order">Display Order *</label>
-                     <select class="form-control" id="display_order" name="display_order" v-model="fdata.display_order" v-on:keyup="check_form">
-                        <option v-for="ord in dsp_ord">@{{ ord }}</option>
-                     </select>
-                  </div>
+							<label for="display_order">Display Order *</label>
+							<select class="form-control" id="display_order" name="display_order" v-model="fdata.display_order" v-on:keyup="check_form">
+								<option v-for="ord in dsp_ord">@{{ ord }}</option>
+							</select>
+						</div>
 					<div class="form-group">
 						<label for="active">Active</label>
 						<input type="checkbox" id="active" name="active" value="1" v-model="fdata.active">
@@ -68,7 +83,9 @@
 			fdata : {
 				slug            : "{{ old('slug') }}",
 				name            : "{{ old('name') }}",
-				value            : "{{ old('value') }}",
+				value           : "{{ old('value') }}",
+				price_type      : "{{ old('price_type') }}",
+				price_value     : "{{ old('price_value') }}",
 				display_order   : "{{ old('display_order') }}",
 				active          : 1,
 				disabled        : true,

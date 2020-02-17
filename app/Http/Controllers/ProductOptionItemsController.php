@@ -18,8 +18,12 @@ class ProductOptionItemsController extends Controller {
 
 		if(! $product_option = ProductOption::with(['product', 'product_option_item'])->where('id', $product_option_id)->first()) { return abort(404); }
 
+		// for list display - need to factor this out
+		$price_types = [ 'F' => 'Free', 'L' => 'Flat Rate', 'P' => 'Percent', 'W' => 'Width', 'H' => 'Height', 'G' => 'Grid'];
+
 		return view('admin.product_option_items.index', compact(
-			'product_option'
+			'product_option',
+			'price_types'
 		));
 
 	} // index
@@ -44,7 +48,7 @@ class ProductOptionItemsController extends Controller {
 	*/
 	public function store(Request $request) {
 
-		 // FIXME add val & auth
+		// FIXME add val & auth
 		// dd($request);
 
 		 $product_option_item = new ProductOptionItem();
@@ -53,9 +57,11 @@ class ProductOptionItemsController extends Controller {
 		 $product_option_item->slug              = $request->get('slug');
 		 $product_option_item->name              = $request->get('name');
 		 $product_option_item->value             = $request->get('value');
+		 $product_option_item->price_type        = $request->get('price_type');
+		 $product_option_item->price_value       = $request->get('price_value');
 		 $product_option_item->description       = $request->get('description');
-		 $product_option_item->display_order     = ($request->get('display_order')) ? $request->get('display_order') :  1;
-		 $product_option_item->active            = $request->get('active') || 0;
+		 $product_option_item->display_order     = $request->get('display_order');
+		 $product_option_item->active            = $request->get('active');
 
 		 $product_option_item->save();
 
@@ -105,9 +111,11 @@ class ProductOptionItemsController extends Controller {
 
 		$product_option_item->slug          = $request->get('slug');
 		$product_option_item->name          = $request->get('name');
+		$product_option_item->price_type    = $request->get('price_type');
+		$product_option_item->price_value   = $request->get('price_value');
 		$product_option_item->description   = $request->get('description');
-		$product_option_item->display_order = ($request->get('display_order')) ? $request->get('display_order') : 1;
-		$product_option_item->active        = ($request->get('active')) ? $request->get('active') : 0;
+		$product_option_item->display_order = $request->get('display_order');
+		$product_option_item->active        = $request->get('active');
 
 		$product_option_item->save();
 

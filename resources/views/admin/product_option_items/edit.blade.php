@@ -32,7 +32,21 @@
 					<div class="form-group">
 						<label for="name">Value *</label>
 						<input type="text" name="value" value="" class='form-control' v-model="fdata.value" v-on:keyup="check_form" placeholder='Product Option Item Value'>
-					</div>
+               <div class="form-group">
+                  <label for="price_type">Option Item Price Type</label>
+                  <select id="price_type" name="price_type" class="form-control" v-model="fdata.price_type">
+                     <option value="F">Free</option>
+                     <option value="L">Flat Rate</option>
+                     <option value="P">Percent of Product Price</option>
+                     <option value="W">Priced by Width</option>
+                     <option value="H">Free</option>
+                     <option value="G">Free</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="price_value">Price</label>
+                  <input type="text" name="price_value" value="" class='form-control' v-model="fdata.price_value" v-on:keyup="check_form" placeholder='Product Option Item Price'>
+               </div>
 					<div class="form-group">
 						<label for="description">Description</label>
 						<textarea name="description" value="" class='form-control' placeholder=''>{{ $product_option_item->description }}</textarea>
@@ -72,6 +86,8 @@
 				slug            : "{{ $product_option_item->slug }}",
 				name            : "{{ $product_option_item->name }}",
 				value           : "{{ $product_option_item->value }}",
+				price_type      : "{{ $product_option_item->price_type }}",
+				price_value     : "{{ $product_option_item->price_value }}",
 				display_order   : "{{ $product_option_item->display_order }}",
 				active          : {{ $product_option_item->active }},
 				disabled        : true,
