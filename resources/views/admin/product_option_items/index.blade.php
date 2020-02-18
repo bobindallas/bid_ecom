@@ -55,8 +55,9 @@
 				<tr>
 					<th>ID</th>
 					<th>Display Order</th>
-					<th>Slug</th>
 					<th>Name</th>
+					<th>Price Type</th>
+					<th>Price</th>
 					<th>Active</th>
 					<th>Actions</th>
 				</tr>

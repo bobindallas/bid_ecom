@@ -17,4 +17,3 @@ Breadcrumbs::for('users.edit', function ($trail, $user) {
     $trail->parent('users.index');
     $trail->push($user->name, route('users.edit', $user->id));
 });
-
