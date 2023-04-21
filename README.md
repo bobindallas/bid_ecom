@@ -55,6 +55,9 @@ We're using:
 * Taxes - some interface to taxing authorities - was much nicer when the Internet was tax-free
 * Internationalization - english only at this point but we want to add language packs once the product gets a little more mature
 
+#### Video walkthrough:
+https://www.youtube.com/watch?v=ecRgjOGI8nI
+
 #### License:
 
 [MIT license](http://opensource.org/licenses/MIT)
